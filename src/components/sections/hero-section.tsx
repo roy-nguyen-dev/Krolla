@@ -4,10 +4,12 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Modal } from '@/components/ui/modal'
 import { emailSchema, EmailFormData } from '@/lib/validations'
 import Image from 'next/image'
+
+import { Button } from '@/components/ui/button'
+import { Modal } from '@/components/ui/modal'
+import ReviewStrip from '@/components/ui/review-strip'
 
 export const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -109,6 +111,18 @@ export const HeroSection: React.FC = () => {
                   </Button>
                 </div>
               </form>
+
+              <ReviewStrip
+                className="mt-4 hidden sm:flex"
+                rating={4.9}
+                avatars={[
+                  '/images/avatars/a1.jpg',
+                  '/images/avatars/a2.jpg',
+                  'SJ',
+                  '/images/avatars/a4.png',
+                  'AM',
+                ]}
+              />
 
               <p className="text-sm text-text-secondary">No spam, ever. Unsubscribe at any time.</p>
             </motion.div>
