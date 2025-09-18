@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal'
 import { emailSchema, EmailFormData } from '@/lib/validations'
+import Image from 'next/image'
 
 export const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -61,35 +62,46 @@ export const HeroSection: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
+              {/* Kroolla Icon */}
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/images/logo.svg"
+                  alt="Kroolla logo"
+                  width={32} // size icon
+                  height={32}
+                  priority
+                />
+                <span className="text-2xl font-bold text-white">Kroolla</span>
+              </div>
               <h1 className="text-4xl md:text-6xl font-bold text-text-primary leading-tight">
                 The Only eBook That Shows You How to{' '}
                 <span className="text-accent-yellow">Break the Anxiety Cycle</span>
               </h1>
-              
+
               <p className="text-xl text-text-secondary leading-relaxed">
-                Discover proven techniques to manage anxiety, stop panic attacks, and reclaim your peace of mind. 
-                Join thousands who have already transformed their lives.
+                Discover proven techniques to manage anxiety, stop panic attacks, and reclaim your
+                peace of mind. Join thousands who have already transformed their lives.
               </p>
 
               {/* Email Form */}
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <div className="flex-1">
+                  <div className="relative flex-1">
                     <input
                       {...register('email')}
                       type="email"
                       placeholder="Enter your email address"
-                      className="w-full px-4 py-3 rounded-button bg-card-background border border-gray-600 text-text-primary placeholder-text-secondary focus:border-accent-yellow focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-opacity-50"
+                      className="w-full px-4 py-3 rounded-button bg-card-background border border-gray-600 text-text-primary placeholder-text-secondary focus:border-accent-yellow focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-opacity-50 mb-1 sm:mb-0"
                     />
                     {errors.email && (
-                      <p className="mt-2 text-red-500 text-sm">
+                      <p className="absolute left-0 -bottom-5 text-red-500 text-sm mb-1 sm:mb-0">
                         {errors.email.message}
                       </p>
                     )}
                   </div>
                   <Button
                     type="submit"
-                    size="lg"
+                    size="md"
                     loading={isSubmitting}
                     className="whitespace-nowrap"
                   >
@@ -98,9 +110,7 @@ export const HeroSection: React.FC = () => {
                 </div>
               </form>
 
-              <p className="text-sm text-text-secondary">
-                No spam, ever. Unsubscribe at any time.
-              </p>
+              <p className="text-sm text-text-secondary">No spam, ever. Unsubscribe at any time.</p>
             </motion.div>
 
             {/* App Mockup */}
@@ -119,13 +129,11 @@ export const HeroSection: React.FC = () => {
                         <span className="text-2xl">📱</span>
                       </div>
                       <h3 className="text-text-primary font-semibold">Anxiety Management App</h3>
-                      <p className="text-text-secondary text-sm">
-                        Your personal guide to calm
-                      </p>
+                      <p className="text-text-secondary text-sm">Your personal guide to calm</p>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Floating elements */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}

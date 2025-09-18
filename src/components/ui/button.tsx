@@ -8,7 +8,8 @@ const buttonVariants = {
   primary: 'bg-accent-yellow text-primary hover:bg-yellow-400 focus:ring-accent-yellow',
   secondary: 'bg-accent-purple text-white hover:bg-purple-600 focus:ring-accent-purple',
   success: 'bg-accent-green text-white hover:bg-green-600 focus:ring-accent-green',
-  outline: 'border-2 border-accent-yellow text-accent-yellow hover:bg-accent-yellow hover:text-primary focus:ring-accent-yellow',
+  outline:
+    'border-2 border-accent-yellow text-accent-yellow hover:bg-accent-yellow hover:text-primary focus:ring-accent-yellow',
 }
 
 const buttonSizes = {
@@ -37,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
         'inline-flex items-center justify-center rounded-button font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary disabled:opacity-50 disabled:cursor-not-allowed',
         buttonVariants[variant],
         buttonSizes[size],
-        className
+        className,
       )}
       {...props}
     >
