@@ -15,7 +15,7 @@ export default function HomePage() {
       <LearnSection />
       <SocialProofSection />
       <PricingSection />
-      <FinalCtaSection />
+      {/* <FinalCtaSection /> */}
       <ContactSection />
     </main>
   )

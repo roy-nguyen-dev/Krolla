@@ -59,9 +59,11 @@ export const HeroSection: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               className="space-y-8"
             >
               {/* Kroolla Icon */}

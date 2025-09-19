@@ -8,6 +8,7 @@ export default function SiteHeader() {
     <div className="sticky top-4 z-50">
       <div className="mx-auto w-full max-w-[1100px] px-4 md:px-6">
         <header className="flex h-14 md:h-16 items-center justify-center rounded-2xl border border-white/10 bg-black/70 backdrop-blur px-3 md:px-5 shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
+          <link rel="icon" href="/images/logo.svg" />
           <Link href="/" className="flex items-center gap-2 text-white">
             <div className="flex items-center gap-2">
               <Image
