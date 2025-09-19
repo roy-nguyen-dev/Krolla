@@ -33,12 +33,12 @@ function stringToColorIndex(str: string) {
   return Math.abs(hash) % bgColors.length
 }
 
-export default function ReviewStrip({
+export const ReviewStrip: React.FC<ReviewStripProps> = ({
   avatars,
   rating = 4.9,
   text = 'based on reviews',
   className,
-}: ReviewStripProps) {
+}) => {
   return (
     <div className={cn('flex items-center gap-4', className)}>
       {/* Avatar stack */}

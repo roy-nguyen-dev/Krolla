@@ -13,16 +13,8 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   }
 
   return (
-    <section
-      className={cn(
-        'py-16 px-4',
-        backgroundClasses[background],
-        className
-      )}
-    >
-      <div className="max-w-7xl mx-auto">
-        {children}
-      </div>
+    <section className={cn('py-16 px-4', backgroundClasses[background], className)}>
+      <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   )
 }

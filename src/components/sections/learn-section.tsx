@@ -1,102 +1,93 @@
 'use client'
 
-import React from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Play } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { SectionContainer } from '@/components/ui/section-container'
+import { ReviewStrip } from '@/components/ui/review-strip'
 
 export const LearnSection: React.FC = () => {
   return (
-    <SectionContainer>
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
-            Learn calm, step by step
-          </h2>
-          
-          <p className="text-xl text-text-secondary leading-relaxed">
-            Stop Panic Attacks in 14 days Or It's Free
+    <SectionContainer background="primary" className="min-h-screen">
+      {/* Heading center */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-10 md:mb-14 "
+      >
+        <p className="text-sm md:text-base font-semibold text-text-secondary">Still Struggling?</p>
+        <h2 className="mt-3 text-text-primary font-bold leading-tight text-[clamp(28px,6vw,64px)]">
+          Learn calm, <span className="text-accent-yellow">step by step</span>
+        </h2>
+      </motion.div>
+
+      {/* 2 columns */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="grid items-center gap-10 md:gap-14 md:grid-cols-2"
+      >
+        {/* LEFT */}
+        <div>
+          <h3 className="text-text-primary font-semibold text-2xl md:text-3xl leading-snug">
+            Stop Panic Attack in <span className="text-accent-yellow italic">14 days</span>
+            <br />
+            Or <span className="text-accent-yellow italic">It’s Free</span>
+          </h3>
+
+          <p className="mt-4 text-text-secondary max-w-prose">
+            Anxiety comes back because it’s a loop — this course shows you how to break it, stop
+            panic attacks, calm anxiety, and live freely.
           </p>
 
-          <p className="text-lg text-text-secondary">
-            Our comprehensive program guides you through proven techniques to manage anxiety, 
-            with step-by-step instructions that you can implement immediately. No complex 
-            theories, just practical solutions that work.
-          </p>
+          <div className="mt-6 text-center sm:text-left">
+            <Button className="inline-flex justify-center" size="md">
+              Break the Cycle⚡
+            </Button>
 
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-accent-green rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">✓</span>
-              </div>
-              <span className="text-text-secondary">14-day structured program</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-accent-green rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">✓</span>
-              </div>
-              <span className="text-text-secondary">Daily exercises and techniques</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-accent-green rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">✓</span>
-              </div>
-              <span className="text-text-secondary">Progress tracking tools</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-accent-green rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">✓</span>
-              </div>
-              <span className="text-text-secondary">Money-back guarantee</span>
+            <div className="mt-3 flex items-center justify-center sm:justify-start gap-2 text-sm text-text-secondary">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-card-background">
+                🎁
+              </span>
+              <span>30-day money-back guarantee</span>
             </div>
           </div>
 
-          <Button size="lg" className="mt-8">
-            Start your journey
-          </Button>
-        </motion.div>
+          {/* Review strip: hide mobile */}
+          <ReviewStrip
+            className="mt-4 hidden sm:flex"
+            rating={4.9}
+            avatars={[
+              '/images/avatars/a1.jpg',
+              '/images/avatars/a2.jpg',
+              'SJ',
+              '/images/avatars/a4.jpg',
+              'AM',
+            ]}
+          />
+        </div>
 
-        {/* Video Preview */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative"
+          transition={{ duration: 0.6 }}
+          className="mx-auto w-full max-w-[560px] space-y-4"
         >
-          <div className="relative bg-card-background rounded-card overflow-hidden shadow-2xl">
-            {/* Video placeholder */}
-            <div className="aspect-video bg-gradient-to-br from-accent-purple to-accent-green flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
-                  <Play className="w-8 h-8 text-white ml-1" />
-                </div>
-                <h3 className="text-white text-xl font-semibold">Preview Video</h3>
-                <p className="text-white/80 text-sm">See what you'll learn</p>
-              </div>
-            </div>
-            
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-16 h-16 bg-accent-yellow rounded-full flex items-center justify-center shadow-lg"
-              >
-                <Play className="w-6 h-6 text-primary ml-1" />
-              </motion.button>
-            </div>
-          </div>
+          <Image
+            src="/images/learn-section.png"
+            alt=""
+            width={560}
+            height={400}
+            className="w-full h-auto object-cover"
+            priority
+          />
         </motion.div>
-      </div>
+      </motion.div>
     </SectionContainer>
   )
 }

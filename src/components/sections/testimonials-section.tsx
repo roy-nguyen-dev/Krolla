@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { TestimonialCard } from '@/components/ui/testimonial-card'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Testimonial } from '@/types'
+import { cn } from '@/lib/utils'
 
 const testimonials: Testimonial[] = [
   {
@@ -39,11 +40,27 @@ const testimonials: Testimonial[] = [
       'As someone who struggled with anxiety for years, this eBook provided the breakthrough I needed. The practical advice is easy to follow and truly effective.',
     rating: 5,
   },
+  {
+    id: '5',
+    name: 'David Thompson',
+    avatar: 'DT',
+    testimonial:
+      'As someone who struggled with anxiety for years, this eBook provided the breakthrough I needed. The practical advice is easy to follow and truly effective.',
+    rating: 5,
+  },
+  {
+    id: '6',
+    name: 'David Thompson',
+    avatar: 'DT',
+    testimonial:
+      'As someone who struggled with anxiety for years, this eBook provided the breakthrough I needed. The practical advice is easy to follow and truly effective.',
+    rating: 5,
+  },
 ]
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <SectionContainer background="primary">
+    <SectionContainer background="primary" className="min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +84,7 @@ export const TestimonialsSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.07 }}
             viewport={{ once: true }}
-            className="h-full"
+            className={cn(i > 1 && 'hidden md:block')}
           >
             <TestimonialCard testimonial={t} className="h-full" />
           </motion.div>
