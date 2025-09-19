@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal'
-import ReviewStrip from '@/components/ui/review-strip'
+import { ReviewStrip } from '@/components/ui/review-strip'
 
 export const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -107,7 +107,7 @@ export const HeroSection: React.FC = () => {
                     loading={isSubmitting}
                     className="whitespace-nowrap"
                   >
-                    Get your free copy
+                    Get your free copy⚡
                   </Button>
                 </div>
               </form>
