@@ -12,42 +12,48 @@ const results: Testimonial[] = [
     id: '1',
     name: 'Jennifer Martinez',
     avatar: 'JM',
-    testimonial: 'I reduced my anxiety by 80% in just 2 weeks. The breathing techniques and mindfulness exercises are game-changers.',
+    testimonial:
+      'I reduced my anxiety by 80% in just 2 weeks. The breathing techniques and mindfulness exercises are game-changers.',
     rating: 5,
   },
   {
     id: '2',
     name: 'Robert Kim',
     avatar: 'RK',
-    testimonial: 'After 10 years of struggling with panic attacks, this program finally gave me the tools I needed. I\'m now panic-free for 6 months.',
+    testimonial:
+      "After 10 years of struggling with panic attacks, this program finally gave me the tools I needed. I'm now panic-free for 6 months.",
     rating: 5,
   },
   {
     id: '3',
     name: 'Lisa Anderson',
     avatar: 'LA',
-    testimonial: 'The step-by-step approach made it so easy to follow. I went from daily anxiety to feeling calm and confident.',
+    testimonial:
+      'The step-by-step approach made it so easy to follow. I went from daily anxiety to feeling calm and confident.',
     rating: 5,
   },
   {
     id: '4',
     name: 'Mark Wilson',
     avatar: 'MW',
-    testimonial: 'I was skeptical, but the results speak for themselves. My quality of life has improved dramatically.',
+    testimonial:
+      'I was skeptical, but the results speak for themselves. My quality of life has improved dramatically.',
     rating: 5,
   },
   {
     id: '5',
     name: 'Amanda Taylor',
     avatar: 'AT',
-    testimonial: 'This program saved my career. I was about to quit my job due to anxiety, now I\'m thriving.',
+    testimonial:
+      "This program saved my career. I was about to quit my job due to anxiety, now I'm thriving.",
     rating: 5,
   },
   {
     id: '6',
     name: 'James Brown',
     avatar: 'JB',
-    testimonial: 'The techniques are so simple yet effective. I wish I had found this sooner. Highly recommend!',
+    testimonial:
+      'The techniques are so simple yet effective. I wish I had found this sooner. Highly recommend!',
     rating: 5,
   },
 ]
@@ -121,15 +127,22 @@ export const SocialProofSection: React.FC = () => {
 
       {/* CTA */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1 }}
         viewport={{ once: true }}
         className="text-center"
       >
-        <Button size="lg" className="text-lg px-8 py-4">
-          Get started today
+        <Button className="inline-flex justify-center" size="lg">
+          Break the Cycle⚡
         </Button>
+
+        <div className="mt-3 flex items-center justify-center gap-2 text-sm text-text-secondary">
+          <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-card-background">
+            🎁
+          </span>
+          <span>30-day money-back guarantee</span>
+        </div>
       </motion.div>
     </SectionContainer>
   )
