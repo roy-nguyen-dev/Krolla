@@ -5,7 +5,9 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { TestimonialCard } from '@/components/ui/testimonial-card'
 import { SectionContainer } from '@/components/ui/section-container'
+import Carousel from '@/components/ui/carousel'
 import { Testimonial } from '@/types'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const results: Testimonial[] = [
   {
@@ -59,8 +61,11 @@ const results: Testimonial[] = [
 ]
 
 export const SocialProofSection: React.FC = () => {
+  const isMobile = useIsMobile()
+
   return (
     <SectionContainer background="card">
+      {/* Heading + Stats */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +80,6 @@ export const SocialProofSection: React.FC = () => {
           Real people, real results. See how our program has transformed lives.
         </p>
 
-        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -110,20 +114,45 @@ export const SocialProofSection: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Testimonials Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {results.map((testimonial, index) => (
-          <motion.div
-            key={testimonial.id}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-          >
-            <TestimonialCard testimonial={testimonial} />
-          </motion.div>
-        ))}
-      </div>
+      {/* Testimonials */}
+      {isMobile ? (
+        <Carousel
+          key="mobile-carousel"
+          className="py-2 mb-12"
+          spacing={20}
+          perView={{ base: 1 }}
+          autoplayMs={2300}
+          autoplayDurationMs={500}
+          autoplayIgnoreReducedMotion
+          autoplayEasing={(t) => 1 - Math.pow(1 - t, 3)}
+          mode="free-snap"
+          loop={false}
+          pingpong={true}
+        >
+          {results.map((t, i) => (
+            <div key={t.id ?? i} className="px-1">
+              <TestimonialCard testimonial={t} className="h-full" />
+            </div>
+          ))}
+        </Carousel>
+      ) : (
+        <div
+          key="desktop-grid"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+        >
+          {results.map((t, index) => (
+            <motion.div
+              key={t.id ?? index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.06 }}
+              viewport={{ once: true }}
+            >
+              <TestimonialCard testimonial={t} />
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       {/* CTA */}
       <motion.div
@@ -133,7 +162,7 @@ export const SocialProofSection: React.FC = () => {
         viewport={{ once: true }}
         className="text-center"
       >
-        <Button className="inline-flex justify-center" size="lg">
+        <Button className="inline-flex justify-center w-full sm:w-auto" size="lg">
           Break the Cycle⚡
         </Button>
 

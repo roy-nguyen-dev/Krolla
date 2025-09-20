@@ -61,13 +61,7 @@ export const LearnSection: React.FC = () => {
           <ReviewStrip
             className="mt-4 hidden sm:flex"
             rating={4.9}
-            avatars={[
-              '/images/avatars/a1.jpg',
-              '/images/avatars/a2.jpg',
-              'SJ',
-              '/images/avatars/a4.jpg',
-              'AM',
-            ]}
+            avatars={['AA', 'AA', 'SJ', 'AA', 'AM']}
           />
         </div>
 

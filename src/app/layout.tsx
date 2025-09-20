@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 import './globals.css'
 
-import SiteHeader from '@/components/sections/site-header'
+import SiteHeader from '@/components/Home/site-header'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -10,9 +10,6 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  icons: {
-    icon: '/public/images/logo.svg',
-  },
   title: 'Anxiety Management eBook - Break the Anxiety Cycle',
   description:
     'The only eBook that shows you how to break the anxiety cycle. Learn proven techniques to manage anxiety, stop panic attacks, and reclaim your peace of mind.',

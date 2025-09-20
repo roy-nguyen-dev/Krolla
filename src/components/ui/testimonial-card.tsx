@@ -33,8 +33,8 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, c
   return (
     <article
       className={cn(
-        'flex h-full flex-col rounded-2xl bg-white text-slate-900 ring-1 ring-black/5 shadow-sm p-5 md:p-6',
-        'transition duration-300 hover:opacity-90',
+        'flex h-full min-h-[240px] md:min-h-[260px] flex-col rounded-2xl bg-white text-slate-900 ring-1 ring-black/5 shadow-sm p-5 md:p-6',
+        'transition-colors duration-300 hover:bg-slate-50 hover:ring-accent-yellow/40',
         className,
       )}
     >
@@ -71,7 +71,12 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, c
       </div>
 
       {/* Quote */}
-      <p className="mt-4 text-[15px] leading-relaxed text-slate-700 flex-1">“{text}”</p>
+      <p
+        className="mt-4 text-[15px] leading-relaxed text-slate-700 flex-1 overflow-hidden
+                   [display:-webkit-box] [-webkit-line-clamp:5] [-webkit-box-orient:vertical]"
+      >
+        “{text}”
+      </p>
 
       {/* Stars */}
       <div className="mt-4 flex items-center gap-1" aria-label={`${rating} out of 5 stars`}>
