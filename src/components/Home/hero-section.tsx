@@ -117,13 +117,7 @@ export const HeroSection: React.FC = () => {
               <ReviewStrip
                 className="mt-4 hidden sm:flex"
                 rating={4.9}
-                avatars={[
-                  '/images/avatars/a1.jpg',
-                  '/images/avatars/a2.jpg',
-                  'SJ',
-                  '/images/avatars/a4.png',
-                  'AM',
-                ]}
+                avatars={['AA', 'BB', 'SJ', 'CC', 'AM']}
               />
 
               <p className="text-sm text-text-secondary">No spam, ever. Unsubscribe at any time.</p>

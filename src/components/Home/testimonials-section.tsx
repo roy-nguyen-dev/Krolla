@@ -83,13 +83,14 @@ export const TestimonialsSection: React.FC = () => {
           key="mobile-carousel"
           className="py-2"
           spacing={20}
-          perView={{ base: 1.1 }}
-          autoplayMs={3200}
-          autoplayDurationMs={1000}
+          perView={{ base: 1 }}
+          autoplayMs={2300}
+          autoplayDurationMs={500}
           autoplayIgnoreReducedMotion
           autoplayEasing={(t) => 1 - Math.pow(1 - t, 3)}
           mode="free-snap"
-          loop
+          loop={false}
+          pingpong={true}
         >
           {testimonials.map((t, i) => (
             <div key={t.id ?? i} className="px-1">

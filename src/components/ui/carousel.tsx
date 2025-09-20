@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 import { useKeenAutoplay } from './useKeenAutoplay'
@@ -21,6 +22,7 @@ export type CarouselProps = {
   autoplayEasing?: (t: number) => number
   mode?: 'free' | 'free-snap' | 'snap'
   loop?: boolean
+  pingpong?: boolean
 }
 
 export default function Carousel({
@@ -36,6 +38,7 @@ export default function Carousel({
   autoplayEasing,
   mode = 'free-snap',
   loop = true,
+  pingpong,
 }: CarouselProps) {
   const instanceRef = useRef(null)
 
@@ -46,6 +49,7 @@ export default function Carousel({
     ignoreReducedMotion: autoplayIgnoreReducedMotion,
     durationMs: autoplayDurationMs,
     easing: autoplayEasing,
+    pingpong,
   })
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>(
@@ -58,6 +62,7 @@ export default function Carousel({
       slides: {
         perView: perView.base,
         spacing,
+        origin: 'center',
       },
       breakpoints: {
         '(min-width: 768px)': {
@@ -79,12 +84,19 @@ export default function Carousel({
   )
 
   return (
-    <div ref={sliderRef} className={cn('keen-slider', className)}>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      ref={sliderRef}
+      className={cn('keen-slider', className)}
+    >
       {Array.from(Array.isArray(children) ? children : [children]).map((child, i) => (
         <div key={i} className="keen-slider__slide">
           {child}
         </div>
       ))}
-    </div>
+    </motion.div>
   )
 }

@@ -9,6 +9,7 @@ type AutoplayOptions = {
   ignoreReducedMotion?: boolean
   /** time duration animation */
   durationMs?: number
+  pingpong?: boolean
   /** easing  animation (0→1) */
   easing?: (t: number) => number
 }
@@ -21,12 +22,14 @@ export function useKeenAutoplay(
     pauseOnFocus = true,
     ignoreReducedMotion = true,
     durationMs = 900,
+    pingpong = false, // <-- bw to 1st item if true
     easing = (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic (smooth)
   }: AutoplayOptions = {},
 ) {
   return (slider: KeenSliderInstance) => {
     let timer: ReturnType<typeof setTimeout> | null = null
     let paused = false
+    let direction: 1 | -1 = 1 //fw (1) or bw (-1)
 
     const prefersReducedMotion =
       !ignoreReducedMotion &&
@@ -41,11 +44,26 @@ export function useKeenAutoplay(
     const next = () => {
       clear()
       if (paused || prefersReducedMotion) return
+
       timer = setTimeout(() => {
-        slider.moveToIdx(slider.track.details.abs + 1, true, {
-          duration: durationMs,
-          easing,
-        })
+        if (!pingpong) {
+          // loop mặc định
+          slider.moveToIdx(slider.track.details.abs + 1, true, { duration: durationMs, easing })
+          return
+        }
+
+        // ping-pong mode
+        const track = slider.track.details
+        const nextAbs = track.abs + direction
+        if (nextAbs > track.maxIdx) {
+          direction = -1
+          slider.moveToIdx(track.abs - 1, true, { duration: durationMs, easing })
+        } else if (nextAbs < 0) {
+          direction = 1
+          slider.moveToIdx(track.abs + 1, true, { duration: durationMs, easing })
+        } else {
+          slider.moveToIdx(nextAbs, true, { duration: durationMs, easing })
+        }
       }, delay)
     }
 
