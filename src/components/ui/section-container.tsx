@@ -6,6 +6,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   children,
   className,
   background = 'primary',
+  id,
 }) => {
   const backgroundClasses = {
     primary: 'bg-primary',
@@ -13,7 +14,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   }
 
   return (
-    <section className={cn('py-16 px-4', backgroundClasses[background], className)}>
+    <section id={id} className={cn('py-16 px-4', backgroundClasses[background], className)}>
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   )

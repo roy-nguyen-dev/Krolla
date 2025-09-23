@@ -49,6 +49,7 @@ export interface SectionContainerProps {
   children: React.ReactNode
   className?: string
   background?: 'primary' | 'card'
+  id?: string
 }
 
 export interface EmailFormData {
