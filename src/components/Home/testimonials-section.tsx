@@ -41,42 +41,13 @@ const testimonials: Testimonial[] = [
       'As someone who struggled with anxiety for years, this eBook provided the breakthrough I needed. The practical advice is easy to follow and truly effective.',
     rating: 5,
   },
-  {
-    id: '5',
-    name: 'Amanda Taylor',
-    avatar: 'AT',
-    testimonial:
-      'This program saved my career. I was about to quit my job due to anxiety, now I am thriving.',
-    rating: 5,
-  },
-  {
-    id: '6',
-    name: 'James Brown',
-    avatar: 'JB',
-    testimonial:
-      'The techniques are simple yet effective. I wish I had found this sooner. Highly recommend!',
-    rating: 5,
-  },
 ]
 
 export const TestimonialsSection: React.FC = () => {
   const isMobile = useIsMobile()
 
   return (
-    <SectionContainer background="primary">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-center mb-10 md:mb-12"
-      >
-        <h2 className="text-2xl md:text-3xl font-bold text-text-primary">What Our Readers Say</h2>
-        <p className="mt-2 text-text-secondary">
-          Join thousands of people who have transformed their relationship with anxiety
-        </p>
-      </motion.div>
-
+    <SectionContainer background="primary" className="py-0 px-0">
       {isMobile ? (
         // MOBILE: Carousel auto-play
         <Carousel
@@ -100,7 +71,7 @@ export const TestimonialsSection: React.FC = () => {
         </Carousel>
       ) : (
         // DESKTOP: Grid static
-        <div key="desktop-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div key="desktop-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t, index) => (
             <motion.div
               key={t.id ?? index}
