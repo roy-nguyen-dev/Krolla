@@ -80,6 +80,7 @@ export default function HeroSection() {
 
           {/* 4. Break the cycle button */}
           <motion.div 
+            className="flex flex-col items-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
@@ -88,6 +89,23 @@ export default function HeroSection() {
               size="lg"
               variant="primary"
             />
+            
+            {/* Money-back guarantee */}
+            <motion.div 
+              className="flex items-center gap-2 text-sm text-text-secondary"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.8 }}
+            >
+              <Image
+                src="/images/present-box.svg"
+                alt="Present box"
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+              <span>14-day money-back guarantee</span>
+            </motion.div>
           </motion.div>
 
           {/* 5. Landing page main image */}
