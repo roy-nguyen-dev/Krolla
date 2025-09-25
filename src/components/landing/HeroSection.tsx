@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { SectionContainer } from '@/components/ui/section-container'
+import BreakCycleButton from '@/components/ui/break-cycle-button'
 import Image from 'next/image'
 
 export default function HeroSection() {
@@ -84,13 +84,10 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
           >
-            <Button
-              variant="primary"
+            <BreakCycleButton
               size="lg"
-              className="text-lg px-8 py-4"
-            >
-              Break the cycle
-            </Button>
+              variant="primary"
+            />
           </motion.div>
 
           {/* 5. Landing page main image */}
