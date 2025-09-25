@@ -8,7 +8,7 @@ import { ReviewStrip } from '@/components/ui/review-strip'
 
 export const LearnSection: React.FC = () => {
   return (
-    <SectionContainer background="primary" className="min-h-screen">
+    <SectionContainer background="primary" className="min-h-screen flex items-center">
       {/* Heading center */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -17,7 +17,7 @@ export const LearnSection: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 md:mb-14 "
       >
-        <p className="text-sm md:text-base font-semibold text-text-secondary">Still Struggling?</p>
+        <p className="text-sm md:text-2xl font-semibold text-text-primary">Still Struggling?</p>
         <h2 className="mt-3 text-text-primary font-bold leading-tight text-[clamp(28px,6vw,64px)]">
           Learn calm, <span className="text-accent-yellow">step by step</span>
         </h2>
@@ -36,7 +36,7 @@ export const LearnSection: React.FC = () => {
           <h3 className="text-text-primary font-semibold text-2xl md:text-3xl leading-snug">
             Stop Panic Attack in <span className="text-accent-yellow italic">14 days</span>
             <br />
-            Or <span className="text-accent-yellow italic">It’s Free</span>
+            Or <span className="text-accent-yellow italic font-bold">It’s Free</span>
           </h3>
 
           <p className="mt-4 text-text-secondary max-w-prose">
@@ -53,7 +53,7 @@ export const LearnSection: React.FC = () => {
               <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-card-background">
                 🎁
               </span>
-              <span>30-day money-back guarantee</span>
+              <span>14-day money-back guarantee</span>
             </div>
           </div>
 

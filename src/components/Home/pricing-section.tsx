@@ -9,36 +9,28 @@ import { PricingPlan } from '@/types'
 const pricingPlans: PricingPlan[] = [
   {
     id: '1',
-    name: 'Panic Attack Mastery',
-    price: '$39',
+    name: '3 Months Membership',
+    price: '$25',
     features: [
-      'Complete 14-day anxiety management program',
-      'Step-by-step breathing techniques',
-      'Mindfulness and meditation exercises',
-      'Progress tracking worksheets',
-      'Email support for 30 days',
-      'Lifetime access to materials',
-      'Mobile-friendly PDF format',
+      'Recovery roadmap for anxiety',
+      'Supportive recovery community',
+      'Weekly mentor Q&A',
     ],
-    buttonText: 'Choose this plan',
+    buttonText: 'Join the community',
     variant: 'yellow',
   },
   {
     id: '2',
-    name: 'Ultimate Membership',
-    price: '$149',
+    name: 'Lifetime Membership',
+    price: '$45',
     features: [
-      'Everything in Panic Attack Mastery',
-      '1-on-1 consultation call (30 min)',
-      'Personalized anxiety management plan',
-      'Advanced techniques for severe anxiety',
+      'Everything in Starter, and...',
+      'Private Support',
+      'Save $50 when you join the course',
+      'Community of recovered students',
       'Priority email support',
-      'Monthly group coaching calls',
-      'Exclusive video content library',
-      'Community access and support',
-      'Money-back guarantee (60 days)',
     ],
-    buttonText: 'Choose this plan',
+    buttonText: 'Join the community',
     variant: 'green',
     popular: true,
   },
@@ -54,17 +46,12 @@ export const PricingSection: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h3 className="text-2xl md:text-xl text-text-primary mb-4">
+        <h3 className="text-sm md:text-2xl font-semibold text-text-primary mb-4">
           500+ <span className="text-accent-yellow font-bold">lives changed</span>
         </h3>
-        <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">It's your turn</h2>
-        <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-8">
-          Choose the plan that fits your needs. Both options include our proven anxiety management
-          system.
-        </p>
-        <div className="text-sm text-text-secondary">
-          All plans include a 30-day money-back guarantee
-        </div>
+        <h1 className="mt-3 text-text-primary font-bold leading-tight text-[clamp(28px,6vw,64px)] mb-4">
+          It's your turn
+        </h1>
       </motion.div>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -80,23 +67,6 @@ export const PricingSection: React.FC = () => {
           </motion.div>
         ))}
       </div>
-
-      {/* Additional info */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        viewport={{ once: true }}
-        className="text-center mt-12"
-      >
-        <div className="bg-card-background rounded-card p-6 max-w-2xl mx-auto">
-          <h3 className="text-lg font-semibold text-text-primary mb-2">Secure Payment</h3>
-          <p className="text-text-secondary text-sm">
-            Your payment is processed securely through our encrypted checkout system. We accept all
-            major credit cards and PayPal.
-          </p>
-        </div>
-      </motion.div>
     </SectionContainer>
   )
 }

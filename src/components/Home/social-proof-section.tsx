@@ -64,7 +64,7 @@ export const SocialProofSection: React.FC = () => {
   const isMobile = useIsMobile()
 
   return (
-    <SectionContainer background="card">
+    <SectionContainer background="primary">
       {/* Heading + Stats */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -73,45 +73,12 @@ export const SocialProofSection: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-          Because results matter
+        <h3 className="text-sm md:text-2xl font-semibold text-text-primary">
+          Real voices - Real recovery
+        </h3>
+        <h2 className="mt-3 text-text-primary font-bold leading-tight text-[clamp(28px,6vw,64px)]">
+          Because result matter
         </h2>
-        <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-8">
-          Real people, real results. See how our program has transformed lives.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="text-4xl font-bold text-accent-yellow mb-2">95%</div>
-            <div className="text-text-secondary">Success Rate</div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="text-4xl font-bold text-accent-green mb-2">10K+</div>
-            <div className="text-text-secondary">People Helped</div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="text-4xl font-bold text-accent-purple mb-2">14</div>
-            <div className="text-text-secondary">Days to Results</div>
-          </motion.div>
-        </div>
       </motion.div>
 
       {/* Testimonials */}
@@ -170,7 +137,7 @@ export const SocialProofSection: React.FC = () => {
           <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-card-background">
             🎁
           </span>
-          <span>30-day money-back guarantee</span>
+          <span>14-day money-back guarantee</span>
         </div>
       </motion.div>
     </SectionContainer>

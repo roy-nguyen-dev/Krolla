@@ -54,8 +54,8 @@ export const HeroSection: React.FC = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center bg-primary">
-        <div className="max-w-7xl mx-auto px-4 py-16">
+      <section className="flex items-center bg-primary">
+        <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <motion.div
@@ -66,25 +66,14 @@ export const HeroSection: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              {/* Kroolla Icon */}
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/images/logo.svg"
-                  alt="Kroolla logo"
-                  width={32} // size icon
-                  height={32}
-                  priority
-                />
-                <span className="text-2xl font-bold text-white">Kroolla</span>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-text-primary leading-tight">
+              <h1 className="text-4xl md:text-4xl font-bold text-text-primary leading-tight">
                 The Only eBook That Shows You How to{' '}
                 <span className="text-accent-yellow">Break the Anxiety Cycle</span>
               </h1>
 
-              <p className="text-xl text-text-secondary leading-relaxed">
-                Discover proven techniques to manage anxiety, stop panic attacks, and reclaim your
-                peace of mind. Join thousands who have already transformed their lives.
+              <p className="text-l text-text-secondary leading-relaxed">
+                Learn how to stop panic attacks, calm anxiety symptoms like dizziness and chest
+                tightness, and finally take back control of your life.
               </p>
 
               {/* Email Form */}
@@ -109,7 +98,7 @@ export const HeroSection: React.FC = () => {
                     loading={isSubmitting}
                     className="whitespace-nowrap"
                   >
-                    Get your free copy⚡
+                    Get your free copy
                   </Button>
                 </div>
               </form>
@@ -119,46 +108,46 @@ export const HeroSection: React.FC = () => {
                 rating={4.9}
                 avatars={['AA', 'BB', 'SJ', 'CC', 'AM']}
               />
-
-              <p className="text-sm text-text-secondary">No spam, ever. Unsubscribe at any time.</p>
             </motion.div>
 
-            {/* App Mockup */}
+            {/* Hero Visual */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative hidden md:flex justify-center md:justify-end"
             >
-              <div className="relative mx-auto max-w-sm">
-                {/* Phone mockup */}
-                <div className="bg-gray-900 rounded-3xl p-2 shadow-2xl">
-                  <div className="bg-card-background rounded-2xl p-4 h-96 flex items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <div className="w-16 h-16 bg-accent-yellow rounded-full mx-auto flex items-center justify-center">
-                        <span className="text-2xl">📱</span>
-                      </div>
-                      <h3 className="text-text-primary font-semibold">Anxiety Management App</h3>
-                      <p className="text-text-secondary text-sm">Your personal guide to calm</p>
-                    </div>
-                  </div>
+              <div className="relative aspect-[5/7] w-[82%] max-w-[560px] lg:max-w-[640px] xl:max-w-[720px] translate-x-2 md:translate-x-4">
+                <div
+                  className="pointer-events-none absolute -z-10 -inset-x-8 bottom-[-10%] h-[72%] 
+                    rounded-full bg-black/50 blur-[90px]"
+                />
+
+                <div
+                  className="pointer-events-none select-none absolute -left-10 sm:-left-12 md:-left-16 lg:-left-20 
+                    -top-6 sm:-top-7 md:-top-8 text-accent-yellow 
+                    text-[12px] sm:text-sm font-medium leading-tight hidden sm:flex flex-col items-start"
+                >
+                  <span className="translate-x-[-5rem] sm:translate-y-44 mt-1 text-base">
+                    Written by someone who lived it
+                  </span>
+                  <Image
+                    src="/images/Vector.svg"
+                    alt=""
+                    width={64}
+                    height={64}
+                    // priority
+                    className="-rotate-12 translate-x-1 sm:translate-y-44 mt-1"
+                  />
                 </div>
 
-                {/* Floating elements */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -top-4 -right-4 bg-accent-green text-white p-3 rounded-full shadow-lg"
-                >
-                  ✓
-                </motion.div>
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                  className="absolute -bottom-4 -left-4 bg-accent-purple text-white p-3 rounded-full shadow-lg"
-                >
-                  💚
-                </motion.div>
+                <Image
+                  src="/images/header-image.png"
+                  alt="Book cover mockup for The Other Side of Anxiety"
+                  priority
+                  width={406}
+                  height={634}
+                />
               </div>
             </motion.div>
           </div>
