@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import VideoTestimonialCard from '../ui/video-testimonial-card'
+import PillBar from '../ui/pill-bar'
 
 const videoTestimonials = [
   {
@@ -55,6 +56,20 @@ export default function VideoTestimonialsSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Pill Bar */}
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <PillBar
+              icon="/images/video-testimo-logo.svg"
+              text="Real Voices, Real Recovery"
+            />
+          </motion.div>
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Because Results Matter
           </h2>

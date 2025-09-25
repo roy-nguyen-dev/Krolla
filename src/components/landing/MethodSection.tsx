@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
+import PillBar from '../ui/pill-bar'
 import Image from 'next/image'
 
 export default function MethodSection() {
@@ -17,6 +18,20 @@ export default function MethodSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Pill Bar */}
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <PillBar
+              icon="/images/method-section-logo.svg"
+              text="Solution"
+            />
+          </motion.div>
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Break the Loop, Step by Step
           </h2>

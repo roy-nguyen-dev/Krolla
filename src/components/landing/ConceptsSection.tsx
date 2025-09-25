@@ -4,22 +4,23 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import ConceptCard from '../ui/concept-card'
+import PillBar from '../ui/pill-bar'
 
 const concepts = [
   {
-    title: 'Cognitive Distorted Views',
-    icon: '/images/circular-icon-1.png', // Placeholder - will use the golden circle from images
-    description: 'Your brain creates false, catastrophic interpretations of reality. What feels like a life-threatening situation is often just normal stress magnified by anxiety.'
+    title: 'Calm Doesn\'t Work',
+    icon: '/images/concept-card1.png',
+    description: 'You try to stay calm during panic, but fear always wins.'
   },
   {
-    title: 'Triggered Fear',
-    icon: '/images/circular-icon-2.png', // Placeholder - will use the slider controls from images
-    description: 'Specific situations, thoughts, or sensations trigger your fight-or-flight response, even when there\'s no real danger present.'
+    title: 'Trapped in Fear',
+    icon: '/images/concept-card2.png',
+    description: 'Every symptom makes you believe the worst, even when nothing\'s wrong.'
   },
   {
-    title: 'The Shame Loop',
-    icon: '/images/circular-icon-3.png', // Placeholder - will use the anxiety disorder diagram
-    description: 'You feel ashamed of your anxiety, which creates more anxiety about having anxiety, trapping you in an endless cycle of self-judgment.'
+    title: 'The Same Loop',
+    icon: '/images/concept-card3.png',
+    description: 'You feel better for a while, but panic always comes back'
   }
 ]
 
@@ -34,6 +35,20 @@ export default function ConceptsSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Pill Bar */}
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <PillBar
+              icon="/images/concept-section-logo.svg"
+              text="The Cycle of Fear"
+            />
+          </motion.div>
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Why anxiety keeps coming back?
           </h2>
