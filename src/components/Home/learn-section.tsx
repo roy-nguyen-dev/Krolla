@@ -36,7 +36,7 @@ export const LearnSection: React.FC = () => {
           <h3 className="text-text-primary font-semibold text-2xl md:text-3xl leading-snug">
             Stop Panic Attack in <span className="text-accent-yellow italic">14 days</span>
             <br />
-            Or <span className="text-accent-yellow italic">It’s Free</span>
+            Or <span className="text-accent-yellow italic font-bold">It’s Free</span>
           </h3>
 
           <p className="mt-4 text-text-secondary max-w-prose">

@@ -73,12 +73,12 @@ export const SocialProofSection: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h3 className="text-2xl text-text-primary max-w-2xl mx-auto mb-8 font-bold">
+        <h3 className="text-sm md:text-2xl font-semibold text-text-primary">
           Real voices - Real recovery
         </h3>
-        <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+        <h2 className="mt-3 text-text-primary font-bold leading-tight text-[clamp(28px,6vw,64px)]">
           Because result matter
-        </h1>
+        </h2>
       </motion.div>
 
       {/* Testimonials */}

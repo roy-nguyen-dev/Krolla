@@ -72,8 +72,8 @@ export const HeroSection: React.FC = () => {
               </h1>
 
               <p className="text-l text-text-secondary leading-relaxed">
-                Discover proven techniques to manage anxiety, stop panic attacks, and reclaim your
-                peace of mind. Join thousands who have already transformed their lives.
+                Learn how to stop panic attacks, calm anxiety symptoms like dizziness and chest
+                tightness, and finally take back control of your life.
               </p>
 
               {/* Email Form */}

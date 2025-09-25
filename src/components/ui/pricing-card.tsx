@@ -6,10 +6,7 @@ import { cn } from '@/lib/utils'
 import { PricingCardProps } from '@/types'
 import { Button } from './button'
 
-export const PricingCard: React.FC<PricingCardProps> = ({
-  plan,
-  className,
-}) => {
+export const PricingCard: React.FC<PricingCardProps> = ({ plan, className }) => {
   const { name, price, features, buttonText, variant, popular } = plan
 
   const cardVariants = {
@@ -27,8 +24,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       className={cn(
         'relative bg-card-background rounded-card p-8 border-2 transition-all duration-200 hover:shadow-xl',
         cardVariants[variant],
-        popular && 'ring-2 ring-accent-yellow ring-opacity-50',
-        className
+        // popular && 'ring-2 ring-accent-yellow ring-opacity-50',
+        className,
       )}
     >
       {/* Popular badge */}
@@ -43,9 +40,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       {/* Plan name and price */}
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-text-primary mb-2">{name}</h3>
-        <div className="text-4xl font-bold text-accent-yellow mb-2">
-          {price}
-        </div>
+        <div className="text-4xl font-bold text-accent-yellow mb-2">{price}</div>
         <p className="text-text-secondary text-sm">One-time payment</p>
       </div>
 
@@ -57,7 +52,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
               size={16}
               className={cn(
                 'text-accent-green mr-3 mt-0.5 flex-shrink-0',
-                variant === 'yellow' ? 'text-accent-yellow' : 'text-accent-green'
+                variant === 'yellow' ? 'text-accent-yellow' : 'text-accent-green',
               )}
             />
             <span className="text-text-secondary text-sm">{feature}</span>
@@ -66,11 +61,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       </ul>
 
       {/* CTA Button */}
-      <Button
-        variant={buttonVariants[variant]}
-        size="lg"
-        className="w-full"
-      >
+      <Button variant={buttonVariants[variant]} size="lg" className="w-full">
         {buttonText}
       </Button>
     </div>
