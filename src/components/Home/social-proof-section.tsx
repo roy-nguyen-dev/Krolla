@@ -115,7 +115,8 @@ export const SocialProofSection: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.06 }}
               viewport={{ once: true }}
             >
-              <TestimonialCard testimonial={t} />
+              {/* <TestimonialCard testimonial={t} /> */}
+              {/* <ProofCard key={p.id} {...p} /> */}
             </motion.div>
           ))}
         </div>

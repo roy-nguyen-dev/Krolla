@@ -5,6 +5,7 @@ import { LearnSection } from './learn-section'
 import { SocialProofSection } from './social-proof-section'
 import { PricingSection } from './pricing-section'
 import { ContactSection } from './contact-section'
+import { ProofSection } from './proof-section'
 
 const Home = () => {
   return (
@@ -12,7 +13,8 @@ const Home = () => {
       <HeroSection />
       <TestimonialsSection />
       <LearnSection />
-      <SocialProofSection />
+      {/* <SocialProofSection /> */}
+      <ProofSection />
       <PricingSection />
       {/* <FinalCtaSection /> */}
       <ContactSection />
