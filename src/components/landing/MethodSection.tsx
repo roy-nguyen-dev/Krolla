@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
@@ -8,6 +8,29 @@ import PillBar from '../ui/pill-bar'
 import Image from 'next/image'
 
 export default function MethodSection() {
+  const [expandedModules, setExpandedModules] = useState<Set<number>>(new Set())
+
+  const modules = [
+    { id: 1, title: "Module 1: Getting Started" },
+    { id: 2, title: "Module 2: Fundamentals" },
+    { id: 3, title: "Module 3: Styleguide" },
+    { id: 4, title: "Module 4: Structure & Layout" },
+    { id: 5, title: "Module 5: Responsiveness" },
+    { id: 6, title: "Module 6: Components" },
+    { id: 7, title: "Module 7: Animations" },
+    { id: 8, title: "Module 8: CMS" },
+  ]
+
+  const toggleModule = (moduleId: number) => {
+    const newExpanded = new Set(expandedModules)
+    if (newExpanded.has(moduleId)) {
+      newExpanded.delete(moduleId)
+    } else {
+      newExpanded.add(moduleId)
+    }
+    setExpandedModules(newExpanded)
+  }
+
   return (
     <SectionContainer id="method" className="py-20">
       <div className="max-w-6xl mx-auto">
@@ -41,51 +64,75 @@ export default function MethodSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - App Screenshots */}
+          {/* Left Column - Table of Contents */}
           <motion.div 
-            className="space-y-6"
+            className="space-y-4"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              {/* Placeholder for app screenshot 1 */}
-              <div className="relative w-full h-80 bg-card-background rounded-2xl border border-white/10 p-8 hover:border-accent-yellow/30 transition-colors duration-300">
-                <div className="space-y-4">
-                  <div className="h-4 bg-accent-yellow/20 rounded w-3/4"></div>
-                  <div className="h-3 bg-white/20 rounded w-1/2"></div>
-                  <div className="h-3 bg-white/20 rounded w-2/3"></div>
-                  <div className="h-8 bg-accent-yellow/30 rounded w-1/3 mt-6"></div>
-                </div>
-                <div className="absolute top-4 right-4 text-xs text-text-secondary">Day 1-7</div>
+            <div className="bg-card-background rounded-2xl border border-white/10 p-6">
+              <h3 className="text-xl font-semibold text-white mb-6">Course Contents</h3>
+              <div className="space-y-2">
+                {modules.map((module, index) => (
+                  <motion.div
+                    key={module.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="border border-white/10 rounded-lg overflow-hidden"
+                  >
+                    {/* Module Header */}
+                    <button
+                      onClick={() => toggleModule(module.id)}
+                      className="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors duration-200"
+                    >
+                      <span className="text-white font-medium text-left">{module.title}</span>
+                      <motion.div
+                        animate={{ rotate: expandedModules.has(module.id) ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <svg 
+                          className="w-5 h-5 text-accent-yellow" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </motion.div>
+                    </button>
+                    
+                    {/* Module Parts */}
+                    <motion.div
+                      initial={false}
+                      animate={{ 
+                        height: expandedModules.has(module.id) ? 'auto' : 0,
+                        opacity: expandedModules.has(module.id) ? 1 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-4 pt-0 space-y-2">
+                        {[1, 2, 3, 4, 5].map((part) => (
+                          <div
+                            key={part}
+                            className="flex items-center gap-3 p-3 bg-white/5 rounded-md hover:bg-white/10 transition-colors duration-200 cursor-pointer"
+                          >
+                            <div className="w-2 h-2 rounded-full bg-accent-yellow/60"></div>
+                            <span className="text-text-secondary text-sm">
+                              Part {part}: Placeholder content for part {part}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
               </div>
-            </motion.div>
-            
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {/* Placeholder for app screenshot 2 */}
-              <div className="relative w-full h-80 bg-card-background rounded-2xl border border-white/10 p-8 hover:border-accent-yellow/30 transition-colors duration-300">
-                <div className="space-y-4">
-                  <div className="h-4 bg-accent-yellow/20 rounded w-2/3"></div>
-                  <div className="h-3 bg-white/20 rounded w-3/4"></div>
-                  <div className="h-3 bg-white/20 rounded w-1/2"></div>
-                  <div className="h-8 bg-accent-yellow/30 rounded w-1/2 mt-6"></div>
-                </div>
-                <div className="absolute top-4 right-4 text-xs text-text-secondary">Day 8-14</div>
-              </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Column - Pricing Card */}
@@ -97,9 +144,19 @@ export default function MethodSection() {
             viewport={{ once: true }}
           >
             <div className="bg-card-background rounded-2xl border border-accent-yellow/30 p-8 shadow-lg shadow-accent-yellow/10 hover:shadow-xl hover:shadow-accent-yellow/20 transition-all duration-300">
+              {/* Learn Section Image */}
+              <div className="mb-8">
+                <Image
+                  src="/images/learn-section.png"
+                  alt="Learn Section"
+                  width={400}
+                  height={200}
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+
               {/* Pricing Header */}
               <div className="text-center mb-8">
-                <div className="text-sm text-accent-yellow font-semibold mb-2">14-Day Program</div>
                 <div className="text-4xl font-bold text-white mb-2">
                   $149
                 </div>
@@ -114,7 +171,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Daily guided exercises</span>
+                  <span className="text-white">2+ hours of focused audio lessons</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -122,7 +179,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">CBT techniques & tools</span>
+                  <span className="text-white">6 structured modules, step by step</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -130,7 +187,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Breathing & mindfulness exercises</span>
+                  <span className="text-white">Lifetime access, listen anytime</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -138,7 +195,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Progress tracking & journal</span>
+                  <span className="text-white">Guided practices for better sleep</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -146,7 +203,15 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Lifetime access</span>
+                  <span className="text-white">Science-based, easy to follow</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-white">30-day money-back guarantee</span>
                 </div>
               </div>
 
@@ -154,15 +219,23 @@ export default function MethodSection() {
               <Button
                 variant="primary"
                 size="lg"
-                className="w-full text-lg py-4"
+                className="w-full text-lg py-4 flex items-center justify-center gap-2"
               >
-                Get Started Now
+                Break the cycle
+                <svg 
+                  className="w-5 h-5" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Button>
 
-              {/* Money-back guarantee */}
+              {/* Payment Options */}
               <div className="text-center mt-4">
                 <div className="text-sm text-text-secondary">
-                  30-day money-back guarantee
+                  Optional: <span className="font-bold">Divide into 3 Monthly Payments</span>
                 </div>
               </div>
             </div>
