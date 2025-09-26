@@ -4,27 +4,28 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import ProblemCard from '../ui/problem-card'
+import PillBar from '../ui/pill-bar'
 
 const problems = [
   {
-    icon: '😰',
-    title: 'Constant Panic Attacks',
-    description: 'Sudden, overwhelming fear that strikes without warning, leaving you feeling helpless and out of control.'
+    icon: '/images/problem-card1.png',
+    title: 'Panic Attacks',
+    description: 'Heart racing, chest tightness, overwhelming fear — even when nothing is actually wrong.'
   },
   {
-    icon: '💭',
-    title: 'Endless Worry & Overthinking',
-    description: 'Your mind races with catastrophic thoughts, making it impossible to focus or find peace.'
+    icon: '/images/problem-card2.png',
+    title: 'Sleepless Nights',
+    description: 'Eyes closed but the mind won\'t stop — worry keeps replaying and sleep never comes.'
   },
   {
-    icon: '😴',
-    title: 'Sleep Disturbances',
-    description: 'Anxiety keeps you awake at night, creating a cycle of exhaustion that makes everything worse.'
+    icon: '/images/problem-card3.png',
+    title: 'Fear of Losing Control',
+    description: 'Avoiding travel, social events, or work, afraid panic might hit without warning.'
   },
   {
-    icon: '🔄',
-    title: 'The Vicious Cycle',
-    description: 'You feel better for a while, but panic always comes back, trapping you in an endless loop.'
+    icon: '/images/problem-card4.png',
+    title: 'Body in Distress',
+    description: 'Dizziness, headaches, chest tightness, shortness of breath — symptoms so real you fear something serious'
   }
 ]
 
@@ -39,6 +40,20 @@ export default function ProblemsSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Pill Bar */}
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <PillBar
+              icon="/images/problem-section-icon.svg"
+              text="Your Daily Challenges"
+            />
+          </motion.div>
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Struggling with these?
           </h2>
