@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import BreakCycleButton from '@/components/ui/break-cycle-button'
+import HeroVideoPlayer from '@/components/ui/hero-video-player'
 import Image from 'next/image'
 
 export default function HeroSection() {
@@ -108,20 +109,17 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* 5. Landing page main image */}
+          {/* 5. Landing page main video */}
           <motion.div 
             className="relative w-full max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
           >
-            <Image
-              src="/images/landingpage-main.png"
-              alt="Anxiety management program overview"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-2xl shadow-2xl"
-              priority
+            <HeroVideoPlayer
+              src="https://fsprniodoyeqkihv.public.blob.vercel-storage.com/main-video.mp4"
+              poster="/images/landingpage-main.png"
+              className="w-full"
             />
           </motion.div>
         </div>
