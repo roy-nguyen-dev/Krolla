@@ -33,13 +33,13 @@ export const ProofCard: React.FC<ProofCardProps> = ({ proof, className }) => {
   return (
     <article
       className={cn(
-        'flex justify-between h-full min-h-[240px] flex-col rounded-2xl p-5 md:p-6 ring-1 shadow-sm',
+        'flex h-full min-h-[240px] flex-col rounded-2xl p-5 md:p-6 ring-1 shadow-sm',
         'bg-[#262626] ring-white/10 text-white',
         className,
       )}
     >
       {/* Quote */}
-      <p className="text-[15px] leading-relaxed text-white/85">“{quote}”</p>
+      <p className="flex-1 text-[15px] leading-relaxed text-white/85">“{quote}”</p>
 
       {/* Stars */}
       <div className="mt-1 flex items-center gap-1">

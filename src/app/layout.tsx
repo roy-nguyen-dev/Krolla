@@ -3,6 +3,7 @@ import { DM_Sans } from 'next/font/google'
 import './globals.css'
 
 import SiteHeader from '@/components/home/site-header'
+import Footer from '@/components/ui/footer'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${dmSans.className} antialiased`}>
         <SiteHeader />
         {children}
+        <Footer />
       </body>
     </html>
   )
