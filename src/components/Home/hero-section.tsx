@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal'
 import { ReviewStrip } from '@/components/ui/review-strip'
+import { SectionContainer } from '../ui/section-container'
 
 export const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -54,7 +55,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <>
-      <section className="flex items-center bg-primary">
+      <SectionContainer className="flex items-center bg-primary">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
@@ -152,7 +153,7 @@ export const HeroSection: React.FC = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </SectionContainer>
 
       {/* Success/Error Modal */}
       <Modal

@@ -3,9 +3,7 @@
 import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { TestimonialCardProps } from '@/types'
-
-const isImage = (s: string) => /\.(png|jpe?g|webp|gif|svg)$/i.test(s)
+import { ProofCardProps, Proof } from '@/types'
 
 const avatarPalettes = [
   'bg-red-100 text-red-700',
@@ -23,27 +21,44 @@ function stringToIndex(str: string) {
   return Math.abs(hash) % avatarPalettes.length
 }
 
-export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, className }) => {
-  const { name, avatar, testimonial: text, rating = 5 } = testimonial
-  const subtitle: string | undefined = (testimonial as any).subtitle
+export const ProofCard: React.FC<ProofCardProps> = ({ proof, className }) => {
+  const { name, avatar, quote, rating = 5 } = proof
 
-  const initials = (avatar || name?.slice(0, 2) || 'U').toString().slice(0, 2).toUpperCase()
+  const initials = (proof.avatar || proof.name?.slice(0, 2) || 'U')
+    .toString()
+    .slice(0, 2)
+    .toUpperCase()
   const colorClass = avatarPalettes[stringToIndex(initials)]
 
   return (
     <article
       className={cn(
-        'flex h-full min-h-[240px] flex-col rounded-2xl p-5 md:p-6 ring-1 shadow-sm',
+        'flex justify-between h-full min-h-[240px] flex-col rounded-2xl p-5 md:p-6 ring-1 shadow-sm',
         'bg-[#262626] ring-white/10 text-white',
         className,
       )}
     >
-      <div className="flex items-center gap-3">
+      {/* Quote */}
+      <p className="text-[15px] leading-relaxed text-white/85">“{quote}”</p>
+
+      {/* Stars */}
+      <div className="mt-1 flex items-center gap-1">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i}
+            size={16}
+            className={i < rating ? 'text-amber-400 fill-amber-400' : 'text-white/20'}
+            aria-hidden="true"
+          />
+        ))}
+      </div>
+
+      <div className="mt-1 flex items-center gap-3 pt-1">
         {typeof avatar === 'string' &&
         (avatar.endsWith('.jpg') ||
+          avatar.endsWith('.jpeg') ||
           avatar.endsWith('.png') ||
-          avatar.endsWith('.webp') ||
-          avatar.endsWith('.jpeg')) ? (
+          avatar.endsWith('.webp')) ? (
           <Image
             src={avatar}
             alt={`${name} avatar`}
@@ -61,34 +76,10 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, c
             {initials}
           </div>
         )}
+
         <div className="min-w-0">
           <p className="text-[15px] font-semibold leading-tight truncate">{name}</p>
-          {subtitle && (
-            <p className="text-[12px] text-white/60 leading-tight truncate">{subtitle}</p>
-          )}
         </div>
-      </div>
-
-      <p
-        className={cn(
-          'mt-4 text-[15px] leading-relaxed flex-1 overflow-hidden text-white/80',
-          '[display:-webkit-box] [-webkit-line-clamp:5] [-webkit-box-orient:vertical]',
-        )}
-      >
-        “{text}”
-      </p>
-
-      {/* Stars */}
-      <div className="mt-4 flex items-center gap-1" aria-label={`${rating} out of 5 stars`}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            size={16}
-            className={cn(i < rating ? 'text-amber-400 fill-amber-400' : 'text-white/20')}
-            aria-hidden="true"
-          />
-        ))}
-        <span className="sr-only">{rating} stars</span>
       </div>
     </article>
   )

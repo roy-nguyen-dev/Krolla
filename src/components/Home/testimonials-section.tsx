@@ -47,7 +47,7 @@ export const TestimonialsSection: React.FC = () => {
   const isMobile = useIsMobile()
 
   return (
-    <SectionContainer background="primary" className="py-0 px-0">
+    <SectionContainer background="primary">
       {isMobile ? (
         // MOBILE: Carousel auto-play
         <Carousel
