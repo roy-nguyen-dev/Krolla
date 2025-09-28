@@ -1,18 +1,9 @@
-// src/components/ui/proof-card.tsx
 'use client'
 
 import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-export type Proof = {
-  id: string
-  quote: string
-  name: string
-  avatar?: string // url image hoặc 2 ký tự
-  rating?: number // mặc định 5
-  className?: string
-}
+import { ProofCardProps, Proof } from '@/types'
 
 const avatarPalettes = [
   'bg-red-100 text-red-700',
@@ -30,20 +21,20 @@ function stringToIndex(str: string) {
   return Math.abs(hash) % avatarPalettes.length
 }
 
-export function ProofCard({ quote, name, avatar, rating = 5, className }: Proof) {
-  // giữ NGUYÊN logic màu avatar của bạn
-  const initials = (avatar || name?.slice(0, 2) || 'U').toString().slice(0, 2).toUpperCase()
+export const ProofCard: React.FC<ProofCardProps> = ({ proof, className }) => {
+  const { name, avatar, quote, rating = 5 } = proof
+
+  const initials = (proof.avatar || proof.name?.slice(0, 2) || 'U')
+    .toString()
+    .slice(0, 2)
+    .toUpperCase()
   const colorClass = avatarPalettes[stringToIndex(initials)]
 
   return (
     <article
       className={cn(
-        // nền tối, viền mảnh, bo lớn giống design
-        'rounded-3xl bg-[#141414] text-white ring-1 ring-white/10',
-        // đệm lớn hơn ở top, quote trước
-        'p-5 md:p-6 flex flex-col gap-4',
-        // viền sáng nhẹ bên trong (tùy chọn, giống hiệu ứng trong hình)
-        'shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03),0_10px_30px_rgba(0,0,0,0.45)]',
+        'flex justify-between h-full min-h-[240px] flex-col rounded-2xl p-5 md:p-6 ring-1 shadow-sm',
+        'bg-[#262626] ring-white/10 text-white',
         className,
       )}
     >
@@ -62,7 +53,6 @@ export function ProofCard({ quote, name, avatar, rating = 5, className }: Proof)
         ))}
       </div>
 
-      {/* Footer: avatar + name (dưới cùng) */}
       <div className="mt-1 flex items-center gap-3 pt-1">
         {typeof avatar === 'string' &&
         (avatar.endsWith('.jpg') ||

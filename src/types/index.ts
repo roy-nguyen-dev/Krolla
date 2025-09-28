@@ -6,6 +6,14 @@ export interface Testimonial {
   rating?: number
 }
 
+export interface Proof {
+  id: string
+  quote: string
+  name: string
+  avatar?: string
+  rating?: number
+}
+
 export interface PricingPlan {
   id: string
   name: string
@@ -37,6 +45,11 @@ export interface ModalProps {
 
 export interface TestimonialCardProps {
   testimonial: Testimonial
+  className?: string
+}
+
+export interface ProofCardProps {
+  proof: Proof
   className?: string
 }
 

@@ -24,7 +24,7 @@ function stringToIndex(str: string) {
 }
 
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, className }) => {
-  const { name, avatar, testimonial: text, rating = 5 } = testimonial as any
+  const { name, avatar, testimonial: text, rating = 5 } = testimonial
   const subtitle: string | undefined = (testimonial as any).subtitle
 
   const initials = (avatar || name?.slice(0, 2) || 'U').toString().slice(0, 2).toUpperCase()
@@ -34,12 +34,11 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, c
     <article
       className={cn(
         'flex h-full min-h-[240px] flex-col rounded-2xl p-5 md:p-6 ring-1 shadow-sm',
-        'bg-[#262626] ring-white/10 text-white', // card nền tối
+        'bg-[#262626] ring-white/10 text-white',
         className,
       )}
     >
       <div className="flex items-center gap-3">
-        {/* Avatar: nếu có ảnh thì hiển thị ảnh, ngược lại hiển thị initials + màu */}
         {typeof avatar === 'string' &&
         (avatar.endsWith('.jpg') ||
           avatar.endsWith('.png') ||
@@ -70,7 +69,6 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, c
         </div>
       </div>
 
-      {/* Nội dung */}
       <p
         className={cn(
           'mt-4 text-[15px] leading-relaxed flex-1 overflow-hidden text-white/80',

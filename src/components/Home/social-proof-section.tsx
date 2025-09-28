@@ -6,15 +6,16 @@ import { Button } from '@/components/ui/button'
 import { TestimonialCard } from '@/components/ui/testimonial-card'
 import { SectionContainer } from '@/components/ui/section-container'
 import Carousel from '@/components/ui/carousel'
-import { Testimonial } from '@/types'
+import { Proof } from '@/types'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import { ProofCard } from '../ui/proof-card'
 
-const results: Testimonial[] = [
+const results: Proof[] = [
   {
     id: '1',
     name: 'Jennifer Martinez',
     avatar: 'JM',
-    testimonial:
+    quote:
       'I reduced my anxiety by 80% in just 2 weeks. The breathing techniques and mindfulness exercises are game-changers.',
     rating: 5,
   },
@@ -22,7 +23,7 @@ const results: Testimonial[] = [
     id: '2',
     name: 'Robert Kim',
     avatar: 'RK',
-    testimonial:
+    quote:
       "After 10 years of struggling with panic attacks, this program finally gave me the tools I needed. I'm now panic-free for 6 months.",
     rating: 5,
   },
@@ -30,7 +31,7 @@ const results: Testimonial[] = [
     id: '3',
     name: 'Lisa Anderson',
     avatar: 'LA',
-    testimonial:
+    quote:
       'The step-by-step approach made it so easy to follow. I went from daily anxiety to feeling calm and confident.',
     rating: 5,
   },
@@ -38,7 +39,7 @@ const results: Testimonial[] = [
     id: '4',
     name: 'Mark Wilson',
     avatar: 'MW',
-    testimonial:
+    quote:
       'I was skeptical, but the results speak for themselves. My quality of life has improved dramatically.',
     rating: 5,
   },
@@ -46,7 +47,7 @@ const results: Testimonial[] = [
     id: '5',
     name: 'Amanda Taylor',
     avatar: 'AT',
-    testimonial:
+    quote:
       "This program saved my career. I was about to quit my job due to anxiety, now I'm thriving.",
     rating: 5,
   },
@@ -54,7 +55,7 @@ const results: Testimonial[] = [
     id: '6',
     name: 'James Brown',
     avatar: 'JB',
-    testimonial:
+    quote:
       'The techniques are so simple yet effective. I wish I had found this sooner. Highly recommend!',
     rating: 5,
   },
@@ -62,6 +63,8 @@ const results: Testimonial[] = [
 
 export const SocialProofSection: React.FC = () => {
   const isMobile = useIsMobile()
+  const latestMobileProofs = results.slice(-7)
+  const latestNotMobileProofs = results.slice(-4)
 
   return (
     <SectionContainer background="primary">
@@ -96,18 +99,19 @@ export const SocialProofSection: React.FC = () => {
           loop={false}
           pingpong={true}
         >
-          {results.map((t, i) => (
+          {latestMobileProofs.map((t, i) => (
             <div key={t.id ?? i} className="px-1">
-              <TestimonialCard testimonial={t} className="h-full" />
+              <ProofCard proof={t} className="h-full" />
+              {/* <TestimonialCard testimonial={t} className="h-full" /> */}
             </div>
           ))}
         </Carousel>
       ) : (
         <div
           key="desktop-grid"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
         >
-          {results.map((t, index) => (
+          {latestNotMobileProofs.map((t, index) => (
             <motion.div
               key={t.id ?? index}
               initial={{ opacity: 0, y: 50 }}
@@ -115,8 +119,7 @@ export const SocialProofSection: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.06 }}
               viewport={{ once: true }}
             >
-              {/* <TestimonialCard testimonial={t} /> */}
-              {/* <ProofCard key={p.id} {...p} /> */}
+              <ProofCard proof={t} />
             </motion.div>
           ))}
         </div>
