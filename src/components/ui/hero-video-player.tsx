@@ -41,22 +41,13 @@ export default function HeroVideoPlayer({
     return () => observer.disconnect()
   }, [])
 
-  // Auto-play when video can play
+  // Load video when in view (no autoplay)
   useEffect(() => {
     const video = videoRef.current
     if (!video || !isInView) return
 
-    const handleCanPlay = async () => {
+    const handleCanPlay = () => {
       setIsLoading(false)
-      try {
-        // Attempt autoplay with muted first (browser requirement)
-        video.muted = true
-        await video.play()
-        setIsPlaying(true)
-      } catch (error) {
-        console.log('Autoplay failed, user interaction required')
-        setIsPlaying(false)
-      }
     }
 
     const handleError = () => {
