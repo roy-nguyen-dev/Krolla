@@ -8,40 +8,43 @@ import PillBar from '../ui/pill-bar'
 
 const videoTestimonials = [
   {
-    thumbnail: '/images/testimonial-1.jpg', // Placeholder - will use the testimonial images
+    thumbnail: '/images/testimonial-1.jpg',
     name: 'Harsh Patel',
     title: 'Founder at Macro',
-    playOverlay: true
+    videoUrl: 'https://fsprniodoyeqkihv.public.blob.vercel-storage.com/testimonials1.mov',
+    hasVideo: true
   },
   {
     thumbnail: '/images/testimonial-2.jpg',
     name: 'Andy Zhang',
     title: 'Co-Founder & CTO at Tower YC W24',
-    playOverlay: true
+    videoUrl: 'https://fsprniodoyeqkihv.public.blob.vercel-storage.com/testimonials2.mov',
+    hasVideo: true
   },
   {
     thumbnail: '/images/testimonial-3.jpg',
     name: 'Brandon Turp',
     title: 'Founder at Nextlayer',
-    playOverlay: true
+    videoUrl: 'https://fsprniodoyeqkihv.public.blob.vercel-storage.com/testimonials3.mov',
+    hasVideo: true
   },
   {
     thumbnail: '/images/testimonial-4.jpg',
     name: 'Drew',
     title: 'Founder Anabolic Insights',
-    playOverlay: true
+    hasVideo: false
   },
   {
     thumbnail: '/images/testimonial-5.jpg',
     name: 'Jules Ioannidis',
     title: 'Co-founder at Gracenote',
-    playOverlay: true
+    hasVideo: false
   },
   {
     thumbnail: '/images/testimonial-6.jpg',
     name: 'Carson Suite',
     title: 'Founder at InvolvChat',
-    playOverlay: true
+    hasVideo: false
   }
 ]
 
@@ -71,7 +74,7 @@ export default function VideoTestimonialsSection() {
           </motion.div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Because Results Matter
+            Because <span className="text-accent-yellow">Results Matter</span>
           </h2>
           <p className="text-lg text-text-secondary max-w-3xl mx-auto">
             See how our program has helped real people break free from anxiety and reclaim their lives.
@@ -91,7 +94,8 @@ export default function VideoTestimonialsSection() {
                 thumbnail={testimonial.thumbnail}
                 name={testimonial.name}
                 title={testimonial.title}
-                playOverlay={testimonial.playOverlay}
+                videoUrl={testimonial.videoUrl}
+                hasVideo={testimonial.hasVideo}
               />
             </motion.div>
           ))}
