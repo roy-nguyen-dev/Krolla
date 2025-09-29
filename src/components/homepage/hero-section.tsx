@@ -10,7 +10,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal'
 import { ReviewStrip } from '@/components/ui/review-strip'
-import { SectionContainer } from '../ui/section-container'
+import { SectionContainer } from '@/components/ui/section-container'
 
 export const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
