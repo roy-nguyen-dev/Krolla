@@ -108,8 +108,16 @@ export default function SiteHeader() {
                   onClick={() => handleNavClick('#hero', 'hero')}
                   variant="primary"
                   size="md"
+                  className="inline-flex items-center gap-2"
                 >
-                  Start Free Trial
+                  <Image
+                    src="/images/arterisk.svg"
+                    alt="Asterisk"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                  Break the Cycle
                 </Button>
               </div>
 
@@ -169,9 +177,16 @@ export default function SiteHeader() {
                   onClick={() => handleNavClick('#hero', 'hero')}
                   variant="primary"
                   size="md"
-                  className="w-full"
+                  className="w-full inline-flex items-center justify-center gap-2"
                 >
-                  Start Free Trial
+                  <Image
+                    src="/images/arterisk.svg"
+                    alt="Asterisk"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                  Break the Cycle
                 </Button>
               </div>
             </nav>

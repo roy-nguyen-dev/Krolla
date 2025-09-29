@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
+import BreakCycleButton from '@/components/ui/break-cycle-button'
 import { SectionContainer } from '@/components/ui/section-container'
 import { ReviewStrip } from '@/components/ui/review-strip'
 
@@ -45,14 +45,21 @@ export const LearnSection: React.FC = () => {
           </p>
 
           <div className="mt-6 text-center sm:text-left">
-            <Button className="inline-flex justify-center" size="md">
-              Break the Cycle⚡
-            </Button>
-
+            <BreakCycleButton
+              size="lg"
+              variant="primary"
+              redirectTo="/landing-page"
+            />
+            
+            {/* Money-back guarantee */}
             <div className="mt-3 flex items-center justify-center sm:justify-start gap-2 text-sm text-text-secondary">
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-card-background">
-                🎁
-              </span>
+              <Image
+                src="/images/present-box.svg"
+                alt="Present box"
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
               <span>14-day money-back guarantee</span>
             </div>
           </div>

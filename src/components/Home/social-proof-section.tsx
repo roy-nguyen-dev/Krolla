@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import BreakCycleButton from '@/components/ui/break-cycle-button'
 import { TestimonialCard } from '@/components/ui/testimonial-card'
 import { SectionContainer } from '@/components/ui/section-container'
 import Carousel from '@/components/ui/carousel'
@@ -133,14 +134,20 @@ export const SocialProofSection: React.FC = () => {
         viewport={{ once: true }}
         className="text-center"
       >
-        <Button className="inline-flex justify-center w-full sm:w-auto" size="lg">
-          Break the Cycle⚡
-        </Button>
+        <BreakCycleButton
+          size="lg"
+          variant="primary"
+        />
 
+        {/* Money-back guarantee */}
         <div className="mt-3 flex items-center justify-center gap-2 text-sm text-text-secondary">
-          <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-card-background">
-            🎁
-          </span>
+          <Image
+            src="/images/present-box.svg"
+            alt="Present box"
+            width={16}
+            height={16}
+            className="w-4 h-4"
+          />
           <span>14-day money-back guarantee</span>
         </div>
       </motion.div>

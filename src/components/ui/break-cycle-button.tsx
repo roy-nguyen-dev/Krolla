@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
 interface BreakCycleButtonProps {
@@ -9,6 +10,7 @@ interface BreakCycleButtonProps {
   className?: string
   size?: 'sm' | 'md' | 'lg'
   variant?: 'primary' | 'outline'
+  redirectTo?: string
 }
 
 const sizeClasses = {
@@ -26,11 +28,23 @@ export default function BreakCycleButton({
   onClick, 
   className,
   size = 'lg',
-  variant = 'primary'
+  variant = 'primary',
+  redirectTo
 }: BreakCycleButtonProps) {
+  const router = useRouter()
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick()
+    }
+    if (redirectTo) {
+      router.push(redirectTo)
+    }
+  }
+
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-button font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary disabled:opacity-50 disabled:cursor-not-allowed',
         sizeClasses[size],
