@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 import './globals.css'
-
-import SiteHeader from '@/components/homepage/site-header'
+import { ConditionalHeader } from '@/components/ConditionalHeader'
 import Footer from '@/components/ui/footer'
 
 const dmSans = DM_Sans({
@@ -40,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={dmSans.variable}>
       <body className={`${dmSans.className} antialiased`}>
-        <SiteHeader />
+        <ConditionalHeader />
         {children}
         <Footer />
       </body>
