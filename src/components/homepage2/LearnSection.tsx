@@ -17,11 +17,8 @@ export const LearnSection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Learn Calm, Step By Step
           </h2>
-          <p className="text-xl text-gray-600 mb-2">
-            Because result matter
-          </p>
           <p className="text-lg text-gray-500">
-            Save years of struggle see results in weeks.
+            Save years of struggle - see results in weeks.
           </p>
         </motion.div>
       </div>
