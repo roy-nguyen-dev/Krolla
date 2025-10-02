@@ -1,68 +1,74 @@
 'use client'
 
 import React from 'react'
-import { Check } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { PricingCardProps } from '@/types'
-import { Button } from './button'
+import { Check } from 'lucide-react'
 
-export const PricingCard: React.FC<PricingCardProps> = ({ plan, className }) => {
-  const { name, price, features, buttonText, variant, popular } = plan
+interface PricingCardProps {
+  name: string
+  price: string
+  paymentType: string
+  features: string[]
+  ctaText: string
+  variant?: 'standard' | 'featured'
+  className?: string
+}
 
-  const cardVariants = {
-    yellow: 'border-accent-yellow',
-    green: 'border-accent-green',
-  }
-
-  const buttonVariants = {
-    yellow: 'primary' as const,
-    green: 'success' as const,
-  }
-
+export const PricingCard: React.FC<PricingCardProps> = ({
+  name,
+  price,
+  paymentType,
+  features,
+  ctaText,
+  variant = 'standard',
+  className
+}) => {
   return (
     <div
       className={cn(
-        'relative bg-card-background rounded-card p-8 border-2 transition-all duration-200 hover:shadow-xl',
-        cardVariants[variant],
-        // popular && 'ring-2 ring-accent-yellow ring-opacity-50',
-        className,
+        'rounded-lg p-8 shadow-sm border transition-all duration-200 hover:shadow-md',
+        variant === 'featured' 
+          ? 'bg-black text-white border-black' 
+          : 'bg-white text-black border-gray-200',
+        className
       )}
     >
-      {/* Popular badge */}
-      {popular && (
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-          <span className="bg-accent-yellow text-primary px-4 py-1 rounded-full text-sm font-medium">
-            Most Popular
-          </span>
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h3 className="text-2xl font-bold mb-2">{name}</h3>
+        <div className="mb-2">
+          <span className="text-4xl font-bold">{price}</span>
         </div>
-      )}
-
-      {/* Plan name and price */}
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-text-primary mb-2">{name}</h3>
-        <div className="text-4xl font-bold text-accent-yellow mb-2">{price}</div>
-        <p className="text-text-secondary text-sm">One-time payment</p>
+        <p className="text-sm opacity-70">{paymentType}</p>
       </div>
 
       {/* Features */}
-      <ul className="space-y-3 mb-8">
+      <ul className="space-y-4 mb-8">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start">
-            <Check
-              size={16}
+            <Check 
               className={cn(
-                'text-accent-green mr-3 mt-0.5 flex-shrink-0',
-                variant === 'yellow' ? 'text-accent-yellow' : 'text-accent-green',
-              )}
+                'w-5 h-5 mr-3 mt-0.5 flex-shrink-0',
+                variant === 'featured' ? 'text-white' : 'text-black'
+              )} 
             />
-            <span className="text-text-secondary text-sm">{feature}</span>
+            <span className="text-sm">{feature}</span>
           </li>
         ))}
       </ul>
 
       {/* CTA Button */}
-      <Button variant={buttonVariants[variant]} size="lg" className="w-full">
-        {buttonText}
+      <Button
+        size="lg"
+        className={cn(
+          'w-full',
+          variant === 'featured'
+            ? 'bg-white text-black hover:bg-gray-100'
+            : 'bg-black text-white hover:bg-gray-800'
+        )}
+      >
+        {ctaText}
       </Button>
     </div>
   )

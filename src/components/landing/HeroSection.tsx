@@ -59,14 +59,14 @@ export default function HeroSection() {
                 14 days
               </motion.span>
             </motion.h1>
-            <motion.h2 
-              className="text-2xl md:text-3xl font-semibold text-accent-yellow"
+            <motion.h1 
+              className="text-4xl md:text-5xl font-semibold text-accent-yellow"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
             >
               Or It's Free
-            </motion.h2>
+            </motion.h1>
           </motion.div>
           
           {/* 3. New paragraph content */}
