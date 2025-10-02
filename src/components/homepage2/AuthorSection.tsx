@@ -7,23 +7,23 @@ import { Button } from '@/components/ui/button'
 
 export const AuthorSection: React.FC = () => {
   return (
-    <SectionContainer className="py-20 bg-gray-50">
+    <SectionContainer className="py-20 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="rounded-lg p-8" style={{ backgroundColor: '#F3F3F3' }}>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Illustration */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="flex justify-center lg:justify-start"
+            className="flex justify-center"
           >
-            <div className="w-80 h-80 bg-gray-200 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-                <p className="text-gray-500 text-sm">Black and white illustration of person</p>
-              </div>
-            </div>
+            <img
+              src="/images/michael-avatar.svg"
+              alt="Michael - Anxiety Recovery Expert"
+              className="w-80 h-80 object-cover rounded-lg"
+            />
           </motion.div>
 
           {/* Content */}
@@ -50,19 +50,20 @@ export const AuthorSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-black text-white hover:bg-gray-800 px-8 py-4"
+                className="bg-black text-white hover:bg-gray-800 px-8 py-2"
               >
                 Break the Cycle
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-black text-black hover:bg-gray-50 px-8 py-4"
+                className="border-black text-black hover:bg-gray-50 px-8 py-2"
               >
                 View blogs
               </Button>
             </div>
           </motion.div>
+          </div>
         </div>
       </div>
     </SectionContainer>
