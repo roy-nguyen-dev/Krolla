@@ -1,6 +1,12 @@
 'use client'
 
 import React from 'react'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 import { Homepage2Header } from '@/components/homepage2/Homepage2Header'
 import { HeroSection } from '@/components/homepage2/HeroSection'
 import { InitialTestimonialsSection } from '@/components/homepage2/InitialTestimonialsSection'
@@ -18,7 +24,7 @@ import { Homepage2Footer } from '@/components/homepage2/Homepage2Footer'
 
 export default function Homepage2() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className={`min-h-screen bg-white ${inter.variable} font-sans`}>
       <Homepage2Header />
       <HeroSection />
       <InitialTestimonialsSection />

@@ -59,10 +59,14 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-red-50 text-red-700 text-sm font-medium mb-8"
+            className="inline-flex items-center gap-3 px-1.5 py-1.5 rounded-lg border border-dashed border-black bg-white mb-8"
           >
-            <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-            Free Only 8 Copies Left
+            <div className="bg-black text-white px-6 py-0.5 rounded-lg font-bold text-2xl">
+              Free
+            </div>
+            <span className="text-gray-700 italic text-xs font-medium" style={{ fontSize: '12.8px', marginLeft: '30px', marginRight: '30px' }}>
+              Only 8 Copies Left
+            </span>
           </motion.div>
 
           {/* Main Headline */}
@@ -70,44 +74,33 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-6"
+            className="text-black leading-tight mb-6"
+            style={{ 
+              fontWeight: 900, 
+              fontSize: '46.5px', 
+              lineHeight: '57.6px' 
+            }}
           >
-            The Only Book To{' '}
-            <span className="text-gray-600">Break The Anxiety Loop</span>
+            The Only Book To
+            <br />
+            <span className="italic text-gray-600">Break The Anxiety Loop</span>
           </motion.h1>
-
-          {/* Rating */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center justify-center gap-2 mb-8"
-          >
-            <div className="flex text-yellow-400">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <span className="text-sm text-gray-600">4.9/5 based on reviews</span>
-          </motion.div>
 
           {/* Email Form */}
           <motion.form
             onSubmit={handleSubmit(onSubmit)}
-            className="max-w-md mx-auto space-y-4"
+            className="max-w-lg mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex gap-3">
               <div className="relative flex-1">
                 <input
                   {...register('email')}
                   type="email"
                   placeholder="email@gmail.com"
-                  className="w-full px-4 py-4 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 bg-gray-100"
                 />
                 {errors.email && (
                   <p className="absolute left-0 -bottom-6 text-red-500 text-sm">
@@ -119,12 +112,53 @@ export const HeroSection: React.FC = () => {
                 type="submit"
                 size="lg"
                 loading={isSubmitting}
-                className="whitespace-nowrap bg-black text-white hover:bg-gray-800 px-8 py-4"
+                className="whitespace-nowrap bg-black text-white hover:bg-gray-800 px-6 py-3 rounded-lg"
               >
                 Get Your Free Book
               </Button>
             </div>
           </motion.form>
+
+          {/* Rating */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex items-center justify-center gap-4"
+          >
+            {/* Avatars */}
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4, 5].map((num) => (
+                <img
+                  key={num}
+                  src={`/images/rating-avatar${num}.png`}
+                  alt={`Avatar ${num}`}
+                  className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
+                  style={{ zIndex: 6 - num }}
+                />
+              ))}
+            </div>
+            
+            {/* Stars and Rating Text */}
+            <div className="flex flex-col items-start gap-1">
+              {/* Stars */}
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <img
+                    key={i}
+                    src="/images/star.svg"
+                    alt="Star"
+                    className="w-6 h-5"
+                  />
+                ))}
+              </div>
+              
+              {/* Rating Text */}
+              <span className="text-sm text-black">
+                <span className="font-bold">4.9/5</span> based on reviews
+              </span>
+            </div>
+          </motion.div>
         </div>
       </SectionContainer>
 

@@ -3,8 +3,14 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 interface NavItem {
   label: string
@@ -54,7 +60,7 @@ export const Homepage2Header: React.FC = () => {
   }, [])
 
   return (
-    <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <div className={`sticky top-0 z-50 bg-white border-b border-gray-200 ${inter.variable} font-sans`}>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <header className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -89,7 +95,7 @@ export const Homepage2Header: React.FC = () => {
           <div className="hidden md:block">
             <Button
               onClick={() => handleNavClick('#hero', 'hero')}
-              variant="default"
+              variant="primary"
               size="md"
               className="bg-black text-white hover:bg-gray-800"
             >
@@ -149,7 +155,7 @@ export const Homepage2Header: React.FC = () => {
               <div className="pt-2">
                 <Button
                   onClick={() => handleNavClick('#hero', 'hero')}
-                  variant="default"
+                  variant="primary"
                   size="md"
                   className="w-full bg-black text-white hover:bg-gray-800"
                 >
