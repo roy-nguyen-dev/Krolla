@@ -82,3 +82,5 @@ export const CoursePreviewSection: React.FC = () => {
     </SectionContainer>
   )
 }
+
+

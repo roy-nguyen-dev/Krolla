@@ -62,3 +62,5 @@ export const AlternativePricingSection: React.FC = () => {
     </SectionContainer>
   )
 }
+
+

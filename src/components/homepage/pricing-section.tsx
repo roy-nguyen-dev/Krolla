@@ -63,7 +63,14 @@ export const PricingSection: React.FC = () => {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
           >
-            <PricingCard plan={plan} />
+            <PricingCard
+              name={plan.name}
+              price={plan.price}
+              paymentType="One-time payment"
+              features={plan.features}
+              ctaText={plan.buttonText}
+              variant={plan.popular ? "featured" : "standard"}
+            />
           </motion.div>
         ))}
       </div>

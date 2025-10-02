@@ -84,3 +84,5 @@ export const Homepage2Footer: React.FC = () => {
     </footer>
   )
 }
+
+
