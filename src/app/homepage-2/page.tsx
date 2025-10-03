@@ -33,8 +33,8 @@ export default function Homepage2() {
       <SocialTestimonialsSection />
       <AuthorSection />
       <CoachingSection />
-      <HowItWorksSection />
       <AddOnsSection />
+      <HowItWorksSection />
       <AlternativePricingSection />
       <CommunityCTASection />
       <FAQSection />

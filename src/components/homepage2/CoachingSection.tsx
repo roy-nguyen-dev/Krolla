@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
@@ -14,69 +14,72 @@ const CoachingPricingCard: React.FC<{
   paymentType: string
   features: string[]
   ctaText: string
-  variant?: 'standard' | 'featured'
   className?: string
+  isSelected?: boolean
+  onClick?: () => void
 }> = ({
   name,
   price,
   paymentType,
   features,
   ctaText,
-  variant = 'standard',
-  className
+  className,
+  isSelected = false,
+  onClick
 }) => {
   return (
     <div
       className={cn(
-        'rounded-lg p-8 shadow-sm border transition-all duration-200 hover:shadow-md',
-        variant === 'featured' 
-          ? 'bg-black text-white border-black' 
-          : 'bg-white text-black border-gray-200',
+        'h-full flex flex-col justify-between rounded-lg p-8 shadow-sm border transition-all duration-150 ease-in-out hover:shadow-md bg-white text-black cursor-pointer',
+        isSelected ? 'border-black border-2' : 'border-gray-200',
         className
       )}
+      onClick={onClick}
     >
-      {/* Header - Left Aligned */}
-      <div className="text-left mb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <Image
-            src="/images/price-tag.svg"
-            alt="Price tag"
-            width={28}
-            height={29}
-            className="w-7 h-7"
-          />
-          <h3 className="text-2xl font-bold">{name}</h3>
-        </div>
-        <div className="mb-2">
-          <span className="text-4xl font-bold">{price}</span>
-        </div>
-        <p className="text-sm opacity-70">{paymentType}</p>
-      </div>
-
-      {/* Features */}
-      <ul className="space-y-4 mb-8">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start">
+      <div>
+        {/* Header - Left Aligned */}
+        <div className="text-left mb-8">
+          <div className="flex items-center gap-3 mb-2">
             <Image
-              src="/images/check-mark.svg"
-              alt="Check mark"
-              width={19}
-              height={20}
-              className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0"
+              src="/images/price-tag.svg"
+              alt="Price tag"
+              width={28}
+              height={29}
+              className="w-7 h-7"
             />
-            <span className="text-sm">{feature}</span>
-          </li>
-        ))}
-      </ul>
+            <h3 className="text-2xl font-bold">{name}</h3>
+          </div>
+          <div className="mb-2">
+            <span className="text-4xl font-bold">{price}</span>
+          </div>
+          <p className="text-sm opacity-70">{paymentType}</p>
+        </div>
+
+        {/* Features */}
+        <ul className="space-y-4">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-start">
+              <Image
+                src="/images/check-mark.svg"
+                alt="Check mark"
+                width={19}
+                height={20}
+                className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0"
+              />
+              <span className="text-sm">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* CTA Button */}
       <Button
         size="lg"
         className={cn(
-          'w-full',
-          variant === 'featured'
-            ? 'bg-white text-black hover:bg-gray-100'
-            : 'bg-black text-white hover:bg-gray-800'
+          'w-full mt-8 transition-all duration-150 ease-in-out',
+          isSelected 
+            ? 'bg-black text-white hover:bg-gray-800' 
+            : 'bg-white text-black border border-gray-300 hover:bg-gray-50'
         )}
       >
         {ctaText}
@@ -86,6 +89,12 @@ const CoachingPricingCard: React.FC<{
 }
 
 export const CoachingSection: React.FC = () => {
+  const [selectedCard, setSelectedCard] = useState<string | null>(null)
+
+  const handleCardClick = (cardName: string) => {
+    setSelectedCard(selectedCard === cardName ? null : cardName)
+  }
+
   const coachingPackages = [
     {
       name: "Calm Start",
@@ -96,8 +105,7 @@ export const CoachingSection: React.FC = () => {
         "Clear steps to break free from anxiety",
         "Delivered within 48 hours"
       ],
-      ctaText: "Break the Cycle",
-      variant: "standard" as const
+      ctaText: "Break the Cycle"
     },
     {
       name: "Full Recovery",
@@ -109,8 +117,7 @@ export const CoachingSection: React.FC = () => {
         "Anxiety Toolkit",
         "Delivered within 24 hours"
       ],
-      ctaText: "Break the Cycle",
-      variant: "featured" as const
+      ctaText: "Break the Cycle"
     }
   ]
 
@@ -135,7 +142,7 @@ export const CoachingSection: React.FC = () => {
           </motion.div>
 
           {/* Pricing Cards */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
             {coachingPackages.map((pkg, index) => (
               <motion.div
                 key={pkg.name}
@@ -150,7 +157,8 @@ export const CoachingSection: React.FC = () => {
                   paymentType={pkg.paymentType}
                   features={pkg.features}
                   ctaText={pkg.ctaText}
-                  variant={pkg.variant}
+                  isSelected={selectedCard === pkg.name}
+                  onClick={() => handleCardClick(pkg.name)}
                 />
               </motion.div>
             ))}
