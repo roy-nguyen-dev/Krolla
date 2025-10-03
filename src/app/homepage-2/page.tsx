@@ -17,7 +17,6 @@ import { AuthorSection } from '@/components/homepage2/AuthorSection'
 import { CoachingSection } from '@/components/homepage2/CoachingSection'
 import { HowItWorksSection } from '@/components/homepage2/HowItWorksSection'
 import { AddOnsSection } from '@/components/homepage2/AddOnsSection'
-import { AlternativePricingSection } from '@/components/homepage2/AlternativePricingSection'
 import { CommunityCTASection } from '@/components/homepage2/CommunityCTASection'
 import { FAQSection } from '@/components/homepage2/FAQSection'
 import { Homepage2Footer } from '@/components/homepage2/Homepage2Footer'
@@ -35,9 +34,8 @@ export default function Homepage2() {
       <CoachingSection />
       <AddOnsSection />
       <HowItWorksSection />
-      <AlternativePricingSection />
-      <CommunityCTASection />
       <FAQSection />
+      <CommunityCTASection />
       <Homepage2Footer />
     </main>
   )
