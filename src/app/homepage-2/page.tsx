@@ -36,7 +36,7 @@ export default function Homepage2() {
       <HowItWorksSection />
       <FAQSection />
       <CommunityCTASection />
-      <Homepage2Footer />
+      {/* <Homepage2Footer /> */}
     </main>
   )
 }
