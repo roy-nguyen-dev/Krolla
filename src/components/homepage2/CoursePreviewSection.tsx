@@ -8,6 +8,23 @@ import { Button } from '@/components/ui/button'
 export const CoursePreviewSection: React.FC = () => {
   return (
     <SectionContainer id="course" className="py-20 bg-white">
+      {/* Learn Section Header */}
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            Learn Calm, Step By Step
+          </h2>
+          <p className="text-lg text-gray-500">
+            Save years of struggle - see results in weeks.
+          </p>
+        </motion.div>
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <div className="rounded-lg p-8" style={{ backgroundColor: '#F3F3F3' }}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">

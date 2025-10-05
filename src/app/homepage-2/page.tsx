@@ -9,8 +9,6 @@ const inter = Inter({
 })
 import { Homepage2Header } from '@/components/homepage2/Homepage2Header'
 import { HeroSection } from '@/components/homepage2/HeroSection'
-import { InitialTestimonialsSection } from '@/components/homepage2/InitialTestimonialsSection'
-import { LearnSection } from '@/components/homepage2/LearnSection'
 import { CoursePreviewSection } from '@/components/homepage2/CoursePreviewSection'
 import { SocialTestimonialsSection } from '@/components/homepage2/SocialTestimonialsSection'
 import { AuthorSection } from '@/components/homepage2/AuthorSection'
@@ -26,13 +24,11 @@ export default function Homepage2() {
     <main className={`min-h-screen bg-white ${inter.variable} font-sans`}>
       <Homepage2Header />
       <HeroSection />
-      <InitialTestimonialsSection />
-      <LearnSection />
       <CoursePreviewSection />
       <SocialTestimonialsSection />
       <AuthorSection />
       <CoachingSection />
-      <AddOnsSection />
+      {/* <AddOnsSection /> */}
       <HowItWorksSection />
       <FAQSection />
       <CommunityCTASection />

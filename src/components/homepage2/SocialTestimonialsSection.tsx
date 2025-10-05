@@ -70,7 +70,7 @@ const socialTestimonials: SocialTestimonial[] = [
 
 export const SocialTestimonialsSection: React.FC = () => {
   return (
-    <SectionContainer className="py-16 lg:py-20 bg-white">
+    <SectionContainer className="py-0 lg:py-0 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -112,8 +112,20 @@ export const SocialTestimonialsSection: React.FC = () => {
                 </div>
               </div>
 
+              {/* Stars */}
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <img
+                    key={i}
+                    src="/images/star.svg"
+                    alt="Star"
+                    className="w-6 h-5"
+                  />
+                ))}
+              </div>
+
               {/* Quote */}
-              <p className="text-sm lg:text-base text-gray-700 leading-relaxed">
+              <p className="mt-4 text-sm lg:text-base text-gray-700 leading-relaxed">
                 {testimonial.quote}
               </p>
             </motion.div>
