@@ -10,11 +10,9 @@ interface HeroVideoPlayerProps {
   className?: string
 }
 
-export default function HeroVideoPlayer({
-  src,
-  poster,
-  className
-}: HeroVideoPlayerProps) {
+const assetsBaseUrl = process.env.NEXT_PUBLIC_ASSETS_URL || ''
+
+export default function HeroVideoPlayer({ src, poster, className }: HeroVideoPlayerProps) {
   const [isLoading, setIsLoading] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
   const [hasError, setHasError] = useState(false)
@@ -31,7 +29,7 @@ export default function HeroVideoPlayer({
           observer.disconnect()
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     )
 
     if (containerRef.current) {
@@ -90,10 +88,12 @@ export default function HeroVideoPlayer({
 
   if (hasError) {
     return (
-      <div className={cn(
-        'relative w-full aspect-video bg-card-background rounded-2xl flex items-center justify-center',
-        className
-      )}>
+      <div
+        className={cn(
+          'relative w-full aspect-video bg-card-background rounded-2xl flex items-center justify-center',
+          className,
+        )}
+      >
         <div className="text-center text-text-secondary">
           <p>Unable to load video</p>
           <p className="text-sm">Please check your connection</p>
@@ -103,10 +103,7 @@ export default function HeroVideoPlayer({
   }
 
   return (
-    <div 
-      ref={containerRef}
-      className={cn('relative w-full', className)}
-    >
+    <div ref={containerRef} className={cn('relative w-full', className)}>
       {/* Loading State */}
       {isLoading && (
         <div className="absolute inset-0 bg-card-background rounded-2xl flex items-center justify-center z-10">
@@ -129,7 +126,7 @@ export default function HeroVideoPlayer({
           onClick={handlePlayClick}
           style={{ cursor: isPlaying ? 'default' : 'pointer' }}
         >
-          <source src={src} type="video/mp4" />
+          <source src={`${assetsBaseUrl}/${src}`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       )}
@@ -148,11 +145,7 @@ export default function HeroVideoPlayer({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <svg 
-              className="w-8 h-8 text-primary ml-1" 
-              fill="currentColor" 
-              viewBox="0 0 20 20"
-            >
+            <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 20 20">
               <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
             </svg>
           </motion.div>
