@@ -14,35 +14,32 @@ interface VideoTestimonialCardProps {
   className?: string
 }
 
-export default function VideoTestimonialCard({ 
-  thumbnail, 
-  name, 
-  title, 
+export default function VideoTestimonialCard({
+  thumbnail,
+  name,
+  title,
   videoUrl,
   hasVideo = false,
-  className 
+  className,
 }: VideoTestimonialCardProps) {
   return (
-    <div className={cn(
-      'group relative rounded-2xl overflow-hidden bg-card-background border border-white/10 hover:border-accent-yellow/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent-yellow/10',
-      className
-    )}>
+    <div
+      className={cn(
+        'group relative rounded-2xl overflow-hidden bg-card-background border border-white/10 hover:border-accent-yellow/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent-yellow/10',
+        className,
+      )}
+    >
       {/* Video or Thumbnail - Full Card */}
       <div className="relative w-full h-full min-h-[300px]">
         {hasVideo && videoUrl ? (
           <HeroVideoPlayer
             src={videoUrl}
             poster={thumbnail}
-            className="w-full h-full"
+            className="w-full h-full aspect-[858/1524]"
           />
         ) : (
-          <div className="relative w-full h-full bg-gradient-to-br from-accent-yellow/20 to-accent-purple/20">
-            <Image
-              src={thumbnail}
-              alt={`${name} testimonial`}
-              fill
-              className="object-cover"
-            />
+          <div className="relative w-full h-full bg-gradient-to-br from-accent-yellow/20 to-accent-purple/20 aspect-[858/1524]">
+            <Image src={thumbnail} alt={`${name} testimonial`} fill className="object-cover" />
             {/* Play Button Overlay for thumbnail-only cards */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors duration-300">
               <div className="w-16 h-16 rounded-full bg-accent-yellow flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
