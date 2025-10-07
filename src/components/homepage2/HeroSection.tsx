@@ -19,33 +19,37 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Blake Beus",
-    ageContext: "32, insomnia & anxiety 6 years",
-    avatar: "/images/rating-avatar5.png",
-    quote: "I've been stuck with anxiety disorder for 7 years, and after finishing this book, I feel like I've almost gotten my life back. No words can truly express my gratitude.",
-    rating: 5
+    name: 'Blake Beus',
+    ageContext: '32, insomnia & anxiety 6 years',
+    avatar: '/images/rating-avatar5.png',
+    quote:
+      "I've been stuck with anxiety disorder for 7 years, and after finishing this book, I feel like I've almost gotten my life back. No words can truly express my gratitude.",
+    rating: 5,
   },
   {
-    name: "Qwantel Latay",
-    ageContext: "21, panic attacks 2 years",
-    avatar: "/images/rating-avatar6.png",
-    quote: "This book didn't just give me knowledge it gave me peace. My anxiety no longer controls every part of my life.",
-    rating: 5
+    name: 'Qwantel Latay',
+    ageContext: '21, panic attacks 2 years',
+    avatar: '/images/rating-avatar6.png',
+    quote:
+      "This book didn't just give me knowledge it gave me peace. My anxiety no longer controls every part of my life.",
+    rating: 5,
   },
   {
-    name: "Dave Baxter",
-    ageContext: "30, trapped in endless worry",
-    avatar: "/images/rating-avatar7.png",
-    quote: "I've been through countless therapies and self-help guides, but this book finally made me feel understood and guided. Truly life-changing.",
-    rating: 5
+    name: 'Dave Baxter',
+    ageContext: '30, trapped in endless worry',
+    avatar: '/images/rating-avatar7.png',
+    quote:
+      "I've been through countless therapies and self-help guides, but this book finally made me feel understood and guided. Truly life-changing.",
+    rating: 5,
   },
   {
-    name: "Dave Baxter",
+    name: 'Dave Baxter',
     ageContext: "28, thought I'd never escape",
-    avatar: "/images/rating-avatar7.png",
-    quote: "Living with anxiety for so long felt endless. This book gave me tools, hope, and strength to believe I can heal.",
-    rating: 5
-  }
+    avatar: '/images/rating-avatar7.png',
+    quote:
+      'Living with anxiety for so long felt endless. This book gave me tools, hope, and strength to believe I can heal.',
+    rating: 5,
+  },
 ]
 
 export const HeroSection: React.FC = () => {
@@ -98,7 +102,7 @@ export const HeroSection: React.FC = () => {
             backgroundImage: 'url(/images/hero-background.svg)',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            backgroundSize: 'contain'
+            backgroundSize: 'contain',
           }}
         >
           {/* Badge */}
@@ -122,7 +126,7 @@ export const HeroSection: React.FC = () => {
             style={{
               fontWeight: 900,
               fontSize: '46.5px',
-              lineHeight: '57.6px'
+              lineHeight: '57.6px',
             }}
           >
             The Only Book To
@@ -137,6 +141,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            noValidate
           >
             <div className="flex gap-3">
               <div className="relative flex-1">
@@ -188,12 +193,7 @@ export const HeroSection: React.FC = () => {
               {/* Stars */}
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <img
-                    key={i}
-                    src="/images/star.svg"
-                    alt="Star"
-                    className="w-6 h-5"
-                  />
+                  <img key={i} src="/images/star.svg" alt="Star" className="w-6 h-5" />
                 ))}
               </div>
 
@@ -237,12 +237,7 @@ export const HeroSection: React.FC = () => {
                 {/* Rating */}
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <img
-                      key={i}
-                      src="/images/star.svg"
-                      alt="Star"
-                      className="w-6 h-5"
-                    />
+                    <img key={i} src="/images/star.svg" alt="Star" className="w-6 h-5" />
                   ))}
                 </div>
               </motion.div>
@@ -262,5 +257,3 @@ export const HeroSection: React.FC = () => {
     </>
   )
 }
-
-
