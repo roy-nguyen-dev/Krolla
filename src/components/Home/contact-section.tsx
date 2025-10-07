@@ -26,10 +26,10 @@ export const ContactSection: React.FC = () => {
   const onSubmit = async (data: ContactFormData) => {
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
       setModalType('success')
-      setModalMessage('Thank you for your message! We\'ll get back to you within 24 hours.')
+      setModalMessage("Thank you for your message! We'll get back to you within 24 hours.")
       setIsModalOpen(true)
       reset()
     } catch (error) {
@@ -49,14 +49,13 @@ export const ContactSection: React.FC = () => {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-            Get in Touch
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">Get in Touch</h2>
           <p className="text-xl text-text-secondary mb-12">
-            Have questions? We're here to help. Send us a message and we'll respond as soon as possible.
+            Have questions? We're here to help. Send us a message and we'll respond as soon as
+            possible.
           </p>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-2">
@@ -68,12 +67,9 @@ export const ContactSection: React.FC = () => {
                   id="name"
                   className="w-full px-4 py-3 rounded-button bg-card-background border border-gray-600 text-text-primary placeholder-text-secondary focus:border-accent-yellow focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-opacity-50"
                   placeholder="Your name"
+                  formNoValidate
                 />
-                {errors.name && (
-                  <p className="mt-2 text-red-500 text-sm">
-                    {errors.name.message}
-                  </p>
-                )}
+                {errors.name && <p className="mt-2 text-red-500 text-sm">{errors.name.message}</p>}
               </div>
 
               <div>
@@ -86,11 +82,10 @@ export const ContactSection: React.FC = () => {
                   id="email"
                   className="w-full px-4 py-3 rounded-button bg-card-background border border-gray-600 text-text-primary placeholder-text-secondary focus:border-accent-yellow focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-opacity-50"
                   placeholder="your@email.com"
+                  formNoValidate={true}
                 />
                 {errors.email && (
-                  <p className="mt-2 text-red-500 text-sm">
-                    {errors.email.message}
-                  </p>
+                  <p className="mt-2 text-red-500 text-sm">{errors.email.message}</p>
                 )}
               </div>
             </div>
@@ -107,18 +102,11 @@ export const ContactSection: React.FC = () => {
                 placeholder="Tell us how we can help you..."
               />
               {errors.message && (
-                <p className="mt-2 text-red-500 text-sm">
-                  {errors.message.message}
-                </p>
+                <p className="mt-2 text-red-500 text-sm">{errors.message.message}</p>
               )}
             </div>
 
-            <Button
-              type="submit"
-              size="lg"
-              loading={isSubmitting}
-              className="w-full md:w-auto"
-            >
+            <Button type="submit" size="lg" loading={isSubmitting} className="w-full md:w-auto">
               Send message
             </Button>
           </form>

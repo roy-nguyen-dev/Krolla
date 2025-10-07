@@ -78,7 +78,7 @@ export const HeroSection: React.FC = () => {
               </p>
 
               {/* Email Form */}
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="relative flex-1">
                     <input
