@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export const CoursePreviewSection: React.FC = () => {
+  const isMobile = useIsMobile()
+
   return (
     <SectionContainer id="course" className="py-20 bg-white">
       {/* Learn Section Header */}
@@ -76,40 +79,79 @@ export const CoursePreviewSection: React.FC = () => {
             </Button>
 
             {/* Rating with Avatars */}
-            <div className="flex items-center gap-4">
-              {/* Avatars */}
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <img
-                    key={num}
-                    src={`/images/rating-avatar${num}.png`}
-                    alt={`Avatar ${num}`}
-                    className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
-                    style={{ zIndex: 6 - num }}
-                  />
-                ))}
-              </div>
-              
-              {/* Stars and Rating Text */}
-              <div className="flex flex-col items-start gap-1">
-                {/* Stars */}
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
+            {isMobile ? (
+              // MOBILE: Stack vertically
+              <div className="flex flex-col items-start gap-3">
+                {/* Avatars */}
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4, 5].map((num) => (
                     <img
-                      key={i}
-                      src="/images/star.svg"
-                      alt="Star"
-                      className="w-6 h-5"
+                      key={num}
+                      src={`/images/rating-avatar${num}.png`}
+                      alt={`Avatar ${num}`}
+                      className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
+                      style={{ zIndex: 6 - num }}
                     />
                   ))}
                 </div>
                 
-                {/* Rating Text */}
-                <span className="text-sm text-black">
-                  <span className="font-bold">4.9/5</span> based on reviews
-                </span>
+                {/* Stars and Rating Text */}
+                <div className="flex flex-col items-start gap-1">
+                  {/* Stars */}
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <img
+                        key={i}
+                        src="/images/star.svg"
+                        alt="Star"
+                        className="w-6 h-5"
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Rating Text */}
+                  <span className="text-sm text-black">
+                    <span className="font-bold">4.9/5</span> based on reviews
+                  </span>
+                </div>
               </div>
-            </div>
+            ) : (
+              // DESKTOP: Horizontal layout
+              <div className="flex items-center gap-4">
+                {/* Avatars */}
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <img
+                      key={num}
+                      src={`/images/rating-avatar${num}.png`}
+                      alt={`Avatar ${num}`}
+                      className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
+                      style={{ zIndex: 6 - num }}
+                    />
+                  ))}
+                </div>
+                
+                {/* Stars and Rating Text */}
+                <div className="flex flex-col items-start gap-1">
+                  {/* Stars */}
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <img
+                        key={i}
+                        src="/images/star.svg"
+                        alt="Star"
+                        className="w-6 h-5"
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Rating Text */}
+                  <span className="text-sm text-black">
+                    <span className="font-bold">4.9/5</span> based on reviews
+                  </span>
+                </div>
+              </div>
+            )}
           </motion.div>
           </div>
         </div>

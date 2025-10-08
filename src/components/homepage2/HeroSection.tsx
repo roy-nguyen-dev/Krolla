@@ -8,6 +8,8 @@ import { emailSchema, EmailFormData } from '@/lib/validations'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal'
 import { SectionContainer } from '@/components/ui/section-container'
+import Carousel from '@/components/ui/carousel'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface Testimonial {
   name: string
@@ -56,6 +58,7 @@ export const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalType, setModalType] = useState<'success' | 'error'>('success')
   const [modalMessage, setModalMessage] = useState('')
+  const isMobile = useIsMobile()
 
   const {
     register,
@@ -95,7 +98,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <>
-      <SectionContainer id="hero" className="py-20 bg-white">
+      <SectionContainer id="hero" className="py-4 bg-white">
         <div
           className="max-w-4xl mx-auto text-center relative min-h-[300px] md:min-h-[400px] pt-10 pb-10 md:pt-20 md:pb-20"
           style={{
@@ -202,45 +205,103 @@ export const HeroSection: React.FC = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Testimonials */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-full"
-                style={{ backgroundColor: '#F3F3F3' }}
-              >
-                {/* Avatar & Name */}
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-10 h-10 rounded-full mr-3"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">{testimonial.name}</p>
-                    <p className="text-gray-500 text-xs">{testimonial.ageContext}</p>
+          {isMobile ? (
+            // MOBILE: Carousel auto-play
+            <Carousel
+              key="mobile-carousel"
+              className="py-2"
+              spacing={20}
+              perView={{ base: 1 }}
+              autoplayMs={2300}
+              autoplayDurationMs={500}
+              autoplayIgnoreReducedMotion
+              autoplayEasing={(t) => 1 - Math.pow(1 - t, 3)}
+              mode="free-snap"
+              loop={false}
+              pingpong={true}
+            >
+              {testimonials.map((testimonial, i) => (
+                <div key={i} className="px-1">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-full"
+                    style={{ backgroundColor: '#F3F3F3' }}
+                  >
+                    {/* Avatar & Name */}
+                    <div className="flex items-center mb-4">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-10 h-10 rounded-full mr-3"
+                      />
+                      <div>
+                        <p className="font-semibold text-gray-900 text-sm">{testimonial.name}</p>
+                        <p className="text-gray-500 text-xs">{testimonial.ageContext}</p>
+                      </div>
+                    </div>
+
+                    {/* Quote */}
+                    <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
+                      "{testimonial.quote}"
+                    </p>
+
+                    {/* Rating */}
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <img key={i} src="/images/star.svg" alt="Star" className="w-6 h-5" />
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            // DESKTOP: Grid static
+            <div key="desktop-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-full"
+                  style={{ backgroundColor: '#F3F3F3' }}
+                >
+                  {/* Avatar & Name */}
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-10 h-10 rounded-full mr-3"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">{testimonial.name}</p>
+                      <p className="text-gray-500 text-xs">{testimonial.ageContext}</p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Quote */}
-                <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
-                  "{testimonial.quote}"
-                </p>
+                  {/* Quote */}
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
+                    "{testimonial.quote}"
+                  </p>
 
-                {/* Rating */}
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <img key={i} src="/images/star.svg" alt="Star" className="w-6 h-5" />
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  {/* Rating */}
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <img key={i} src="/images/star.svg" alt="Star" className="w-6 h-5" />
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </SectionContainer>
 

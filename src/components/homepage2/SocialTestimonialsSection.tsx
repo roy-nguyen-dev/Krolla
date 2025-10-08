@@ -3,6 +3,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
+import Carousel from '@/components/ui/carousel'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface SocialTestimonial {
   name: string
@@ -69,6 +71,8 @@ const socialTestimonials: SocialTestimonial[] = [
 ]
 
 export const SocialTestimonialsSection: React.FC = () => {
+  const isMobile = useIsMobile()
+
   return (
     <SectionContainer className="py-0 lg:py-0 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,48 +93,108 @@ export const SocialTestimonialsSection: React.FC = () => {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {socialTestimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white border border-gray-200 rounded-xl lg:rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow duration-200"
-            >
-              {/* Profile Section */}
-              <div className="flex items-center gap-3 mb-4">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full object-cover"
-                />
-                <div>
-                  <p className="text-base lg:text-lg font-semibold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">{testimonial.handle}</p>
-                </div>
-              </div>
+        {isMobile ? (
+          // MOBILE: Carousel auto-play
+          <Carousel
+            key="mobile-carousel"
+            className="py-2"
+            spacing={20}
+            perView={{ base: 1 }}
+            autoplayMs={2300}
+            autoplayDurationMs={500}
+            autoplayIgnoreReducedMotion
+            autoplayEasing={(t) => 1 - Math.pow(1 - t, 3)}
+            mode="free-snap"
+            loop={false}
+            pingpong={true}
+          >
+            {socialTestimonials.map((testimonial, i) => (
+              <div key={i} className="px-1">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white border border-gray-200 rounded-xl lg:rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  {/* Profile Section */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-12 h-12 lg:w-14 lg:h-14 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="text-base lg:text-lg font-semibold text-gray-900">{testimonial.name}</p>
+                      <p className="text-sm text-gray-500">{testimonial.handle}</p>
+                    </div>
+                  </div>
 
-              {/* Stars */}
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
+                  {/* Stars */}
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <img
+                        key={i}
+                        src="/images/star.svg"
+                        alt="Star"
+                        className="w-6 h-5"
+                      />
+                    ))}
+                  </div>
+
+                  {/* Quote */}
+                  <p className="mt-4 text-sm lg:text-base text-gray-700 leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+                </motion.div>
+              </div>
+            ))}
+          </Carousel>
+        ) : (
+          // DESKTOP: Grid static
+          <div key="desktop-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {socialTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white border border-gray-200 rounded-xl lg:rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow duration-200"
+              >
+                {/* Profile Section */}
+                <div className="flex items-center gap-3 mb-4">
                   <img
-                    key={i}
-                    src="/images/star.svg"
-                    alt="Star"
-                    className="w-6 h-5"
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full object-cover"
                   />
-                ))}
-              </div>
+                  <div>
+                    <p className="text-base lg:text-lg font-semibold text-gray-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500">{testimonial.handle}</p>
+                  </div>
+                </div>
 
-              {/* Quote */}
-              <p className="mt-4 text-sm lg:text-base text-gray-700 leading-relaxed">
-                {testimonial.quote}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+                {/* Stars */}
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <img
+                      key={i}
+                      src="/images/star.svg"
+                      alt="Star"
+                      className="w-6 h-5"
+                    />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="mt-4 text-sm lg:text-base text-gray-700 leading-relaxed">
+                  {testimonial.quote}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </SectionContainer>
   )
