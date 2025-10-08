@@ -118,11 +118,9 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-black leading-tight mb-6"
+            className="text-black leading-tight mb-6 text-[20px] md:text-[46.5px] md:leading-[57.6px]"
             style={{
-              fontWeight: 900,
-              fontSize: '46.5px',
-              lineHeight: '57.6px'
+              fontWeight: 900
             }}
           >
             The Only Book To
@@ -138,7 +136,7 @@ export const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="flex gap-3">
+            <div className="flex flex-col md:flex-row gap-3">
               <div className="relative flex-1">
                 <input
                   {...register('email')}

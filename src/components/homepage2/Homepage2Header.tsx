@@ -66,9 +66,6 @@ export const Homepage2Header: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 text-black">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">K</span>
-              </div>
               <span className="text-2xl font-bold text-black">Kroolla</span>
             </div>
           </Link>

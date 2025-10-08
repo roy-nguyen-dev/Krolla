@@ -74,6 +74,7 @@ const CoachingPricingCard: React.FC<{
 
         {/* CTA Button */}
         <Button
+          disabled={!isSelected}
           size="lg"
           className={cn(
             'w-full mt-8 transition-all duration-150 ease-in-out',
@@ -89,7 +90,7 @@ const CoachingPricingCard: React.FC<{
   }
 
 export const CoachingSection: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState<string | null>(null)
+  const [selectedCard, setSelectedCard] = useState<string | null>("Full Recovery")
 
   const handleCardClick = (cardName: string) => {
     setSelectedCard(selectedCard === cardName ? null : cardName)
