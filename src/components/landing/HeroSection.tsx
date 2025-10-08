@@ -13,7 +13,7 @@ export default function HeroSection() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center text-center space-y-8">
           {/* 1. Rating */}
-          <motion.div 
+          <motion.div
             className="flex items-center gap-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -21,9 +21,9 @@ export default function HeroSection() {
           >
             <div className="flex text-accent-yellow">
               {[...Array(5)].map((_, i) => (
-                <motion.svg 
-                  key={i} 
-                  className="w-5 h-5 fill-current" 
+                <motion.svg
+                  key={i}
+                  className="w-5 h-5 fill-current"
                   viewBox="0 0 20 20"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -37,20 +37,20 @@ export default function HeroSection() {
           </motion.div>
 
           {/* 2. Stop Panic Attacks headline */}
-          <motion.div 
+          <motion.div
             className="space-y-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               Stop Panic Attacks in{' '}
-              <motion.span 
+              <motion.span
                 className="text-accent-yellow"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -59,7 +59,7 @@ export default function HeroSection() {
                 14 days
               </motion.span>
             </motion.h1>
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl font-semibold text-accent-yellow"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,31 +68,29 @@ export default function HeroSection() {
               Or It's Free
             </motion.h1>
           </motion.div>
-          
+
           {/* 3. New paragraph content */}
-          <motion.p 
+          <motion.p
             className="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
           >
-            Anxiety comes back because it's a loop — this course shows you how to break it, stop panic attacks, calm anxiety, and live freely.
+            Anxiety comes back because it's a loop — this course shows you how to break it, stop
+            panic attacks, calm anxiety, and live freely.
           </motion.p>
 
           {/* 4. Break the cycle button */}
-          <motion.div 
+          <motion.div
             className="flex flex-col items-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
           >
-            <BreakCycleButton
-              size="lg"
-              variant="primary"
-            />
-            
+            <BreakCycleButton size="lg" variant="primary" />
+
             {/* Money-back guarantee */}
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2 text-sm text-text-secondary"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -110,14 +108,14 @@ export default function HeroSection() {
           </motion.div>
 
           {/* 5. Landing page main video */}
-          <motion.div 
+          <motion.div
             className="relative w-full max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
           >
             <HeroVideoPlayer
-              src="https://fsprniodoyeqkihv.public.blob.vercel-storage.com/main-video.mp4"
+              src="Videos/14s-version.mp4"
               poster="/images/landingpage-main.png"
               className="w-full"
             />

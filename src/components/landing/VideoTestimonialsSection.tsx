@@ -11,48 +11,48 @@ const videoTestimonials = [
     thumbnail: '/images/testimonial-1.jpg',
     name: 'Harsh Patel',
     title: 'Founder at Macro',
-    videoUrl: 'https://fsprniodoyeqkihv.public.blob.vercel-storage.com/testimonials1.mov',
-    hasVideo: true
+    videoUrl: 'Videos/Testimonials_1_1.mov',
+    hasVideo: true,
   },
   {
     thumbnail: '/images/testimonial-2.jpg',
     name: 'Andy Zhang',
     title: 'Co-Founder & CTO at Tower YC W24',
-    videoUrl: 'https://fsprniodoyeqkihv.public.blob.vercel-storage.com/testimonials2.mov',
-    hasVideo: true
+    videoUrl: 'Videos/testimonials_2.mov',
+    hasVideo: true,
   },
   {
     thumbnail: '/images/testimonial-3.jpg',
     name: 'Brandon Turp',
     title: 'Founder at Nextlayer',
-    videoUrl: 'https://fsprniodoyeqkihv.public.blob.vercel-storage.com/testimonials3.mov',
-    hasVideo: true
+    videoUrl: 'Videos/testimonials_3.mov',
+    hasVideo: true,
   },
   {
     thumbnail: '/images/testimonial-4.jpg',
     name: 'Drew',
     title: 'Founder Anabolic Insights',
-    hasVideo: false
+    hasVideo: false,
   },
   {
     thumbnail: '/images/testimonial-5.jpg',
     name: 'Jules Ioannidis',
     title: 'Co-founder at Gracenote',
-    hasVideo: false
+    hasVideo: false,
   },
   {
     thumbnail: '/images/testimonial-6.jpg',
     name: 'Carson Suite',
     title: 'Founder at InvolvChat',
-    hasVideo: false
-  }
+    hasVideo: false,
+  },
 ]
 
 export default function VideoTestimonialsSection() {
   return (
     <SectionContainer id="results" className="py-20">
       <div className="max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,24 +60,22 @@ export default function VideoTestimonialsSection() {
           viewport={{ once: true }}
         >
           {/* Pill Bar */}
-          <motion.div 
+          <motion.div
             className="flex justify-center mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <PillBar
-              icon="/images/video-testimo-logo.svg"
-              text="Real Voices, Real Recovery"
-            />
+            <PillBar icon="/images/video-testimo-logo.svg" text="Real Voices, Real Recovery" />
           </motion.div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Because <span className="text-accent-yellow">Results Matter</span>
           </h2>
           <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-            See how our program has helped real people break free from anxiety and reclaim their lives.
+            See how our program has helped real people break free from anxiety and reclaim their
+            lives.
           </p>
         </motion.div>
 
