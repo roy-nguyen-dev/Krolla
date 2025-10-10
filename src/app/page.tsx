@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Home from '@/components/homepage'
+import Homepage2 from '@/app/homepage-2/page'
 
 export default function HomePage() {
   return (
     <main>
-      <Home />
+      <Homepage2 />
     </main>
   )
 }

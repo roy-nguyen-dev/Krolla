@@ -10,8 +10,7 @@ export default function Footer() {
         {/* Left section */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <Image alt="Krolla Icon" src="/images/logo.svg" width={36} height={36}></Image>
-            <span className="font-semibold text-white">Kroolla</span>
+            <span className="text-2xl font-semibold text-white">Kroolla</span>
           </div>
           <p className="text-sm text-gray-400">Break free from anxiety in 14 days, not years.</p>
           <p className="text-xs text-gray-500">

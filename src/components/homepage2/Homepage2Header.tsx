@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,6 +30,7 @@ const navItems: NavItem[] = [
 export const Homepage2Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const router = useRouter()
 
   // Handle smooth scrolling to sections
   const handleNavClick = (href: string, section: string) => {
@@ -38,6 +40,10 @@ export const Homepage2Header: React.FC = () => {
       setActiveSection(section)
     }
     setIsMobileMenuOpen(false)
+  }
+
+  const handleRedirectTo = (href: string) => {
+    router.push(href);
   }
 
   // Track active section based on scroll position
@@ -91,7 +97,7 @@ export const Homepage2Header: React.FC = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button
-              onClick={() => handleNavClick('#hero', 'hero')}
+              onClick={() => handleRedirectTo('/landing-page')}
               variant="primary"
               size="md"
               className="bg-black text-white hover:bg-gray-800"
@@ -151,7 +157,7 @@ export const Homepage2Header: React.FC = () => {
               ))}
               <div className="pt-2">
                 <Button
-                  onClick={() => handleNavClick('#hero', 'hero')}
+                  onClick={() => handleRedirectTo('/landing-page')}
                   variant="primary"
                   size="md"
                   className="w-full bg-black text-white hover:bg-gray-800"

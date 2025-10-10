@@ -5,9 +5,15 @@ import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import { useRouter } from 'next/navigation'
 
 export const CoursePreviewSection: React.FC = () => {
   const isMobile = useIsMobile()
+  const router = useRouter()
+
+  const handleRedirectTo = (href: string) => {
+    router.push(href)
+  }
 
   return (
     <SectionContainer id="course" className="py-20 bg-white">
@@ -73,6 +79,7 @@ export const CoursePreviewSection: React.FC = () => {
             {/* CTA Button */}
             <Button
               size="lg"
+              onClick={() => handleRedirectTo('/landing-page')}
               className="bg-black text-white hover:bg-gray-800 px-8 py-2"
             >
               Break the Cycle

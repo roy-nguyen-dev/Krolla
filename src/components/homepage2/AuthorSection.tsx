@@ -4,8 +4,15 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 export const AuthorSection: React.FC = () => {
+  const router = useRouter()
+
+  const handleRedirectTo = (href: string) => {
+    router.push(href)
+  }
+
   return (
     <SectionContainer className="py-20 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -50,6 +57,7 @@ export const AuthorSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
+                onClick={() => handleRedirectTo('/landing-page')}
                 className="bg-black text-white hover:bg-gray-800 px-8 py-2"
               >
                 Break the Cycle

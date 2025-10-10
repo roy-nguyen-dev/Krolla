@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 // Custom Pricing Card for CoachingSection with left alignment and custom icons
 const CoachingPricingCard: React.FC<{
@@ -16,7 +17,6 @@ const CoachingPricingCard: React.FC<{
   ctaText: string
   className?: string
   isSelected?: boolean
-  onClick?: () => void
 }> = ({
   name,
   price,
@@ -24,17 +24,21 @@ const CoachingPricingCard: React.FC<{
   features,
   ctaText,
   className,
-  isSelected = false,
-  onClick
+  isSelected = false
 }) => {
+    const router = useRouter()
+
+    const handleRedirectTo = (href: string) => {
+      router.push(href)
+    }
+
     return (
       <div
         className={cn(
-          'h-full flex flex-col justify-between rounded-lg p-8 shadow-sm border transition-all duration-150 ease-in-out hover:shadow-md bg-white text-black cursor-pointer',
+          'h-full flex flex-col justify-between rounded-lg p-8 shadow-sm border transition-all duration-150 ease-in-out hover:shadow-md bg-white text-black',
           isSelected ? 'border-black border-2' : 'border-gray-200',
           className
         )}
-        onClick={onClick}
       >
         <div>
           {/* Header - Left Aligned */}
@@ -74,14 +78,9 @@ const CoachingPricingCard: React.FC<{
 
         {/* CTA Button */}
         <Button
-          disabled={!isSelected}
           size="lg"
-          className={cn(
-            'w-full mt-8 transition-all duration-150 ease-in-out',
-            isSelected
-              ? 'bg-black text-white hover:bg-gray-800'
-              : 'bg-white text-black border border-gray-300 hover:bg-gray-50'
-          )}
+          onClick={() => handleRedirectTo('/landing-page')}
+          className="w-full mt-8 bg-black text-white hover:bg-gray-800 transition-all duration-150 ease-in-out"
         >
           {ctaText}
         </Button>
@@ -90,11 +89,6 @@ const CoachingPricingCard: React.FC<{
   }
 
 export const CoachingSection: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState<string | null>("Full Recovery")
-
-  const handleCardClick = (cardName: string) => {
-    setSelectedCard(selectedCard === cardName ? null : cardName)
-  }
 
   const coachingPackages = [
     {
@@ -158,8 +152,7 @@ export const CoachingSection: React.FC = () => {
                   paymentType={pkg.paymentType}
                   features={pkg.features}
                   ctaText={pkg.ctaText}
-                  isSelected={selectedCard === pkg.name}
-                  onClick={() => handleCardClick(pkg.name)}
+                  isSelected={pkg.name === "Full Recovery"}
                 />
               </motion.div>
             ))}

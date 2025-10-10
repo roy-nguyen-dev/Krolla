@@ -45,9 +45,9 @@ const testimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    name: 'Dave Baxter',
+    name: 'James Logan',
     ageContext: "28, thought I'd never escape",
-    avatar: '/images/rating-avatar7.png',
+    avatar: '/images/rating-avatar8.jpg',
     quote:
       'Living with anxiety for so long felt endless. This book gave me tools, hope, and strength to believe I can heal.',
     rating: 5,
@@ -132,7 +132,7 @@ export const HeroSection: React.FC = () => {
           >
             The Only Book To
             <br />
-            <span className="italic text-gray-600">Break The Anxiety Loop</span>
+            <span className="italic">Break The Anxiety Loop</span>
           </motion.h1>
 
           {/* Email Form */}
