@@ -63,18 +63,23 @@ export default function Footer() {
           <h3 className="text-sm font-semibold text-gray-400 uppercase">Legal</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/#" className="hover:text-white">
+              <Link href="/terms" className="hover:text-white">
                 Terms of services
               </Link>
             </li>
             <li>
-              <Link href="/#" className="hover:text-white">
+              <Link href="/privacy" className="hover:text-white">
                 Privacy policy
               </Link>
             </li>
             <li>
-              <Link href="/#" className="hover:text-white">
+              <Link href="/disclaimer" className="hover:text-white">
                 Disclaimer
+              </Link>
+            </li>
+            <li>
+              <Link href="/refund" className="hover:text-white">
+                Refund, Cancellation & Access Policy
               </Link>
             </li>
           </ul>
