@@ -125,7 +125,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-black leading-tight mb-6 text-[20px] md:text-[46.5px] md:leading-[57.6px]"
+            className="text-black leading-tight mb-6 text-[36px] md:text-[46.5px] md:leading-[57.6px]"
             style={{
               fontWeight: 900
             }}

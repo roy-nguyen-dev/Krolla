@@ -8,28 +8,28 @@ import PillBar from '../ui/pill-bar'
 
 const faqs = [
   {
-    question: 'How long does the program take?',
-    answer: 'The program is designed to be completed over 14 days, with daily exercises that take 15-30 minutes each. However, you have lifetime access, so you can go at your own pace and revisit any content whenever you need it.'
+    question: 'Is this method safe?',
+    answer: 'Yes, absolutely. Everything in the course is safe and based on proven, science-backed methods. You\’ll learn to calm your mind and body naturally — no medication, no side effects.'
   },
   {
-    question: 'What if it doesn\'t work for me?',
-    answer: 'We\'re so confident in our program that we offer a 30-day money-back guarantee. If you\'re not completely satisfied with your results, simply contact us within 30 days for a full refund, no questions asked.'
+    question: 'Do I have to stop taking my medication?',
+    answer: 'No, you shouldn\’t stop suddenly. Stopping medication is a gradual process that should always be done under your doctor\’s guidance. This course is designed to work safely alongside your current treatment, helping you recover more naturally and confidently.'
   },
   {
-    question: 'Do I need any special equipment?',
-    answer: 'No special equipment is required. The program uses simple breathing exercises, mindfulness techniques, and cognitive behavioral therapy tools that you can practice anywhere, anytime. All you need is a quiet space and a few minutes each day.'
+    question: 'How long will it take, and will I fully recover?',
+    answer: 'Everyone\’s journey is different. Many students notice significant improvements within the first 1–2 weeks of consistent practice. If you follow the steps and stay committed, you\’ll continue to see real progress and long-lasting results.'
   },
   {
-    question: 'Is this suitable for severe anxiety?',
-    answer: 'Our program is designed to help with various levels of anxiety, from mild to moderate. However, if you\'re experiencing severe anxiety or panic disorders, we recommend consulting with a healthcare professional first. This program can be used alongside professional treatment.'
+    question: 'What if I don\’t understand something in the course?',
+    answer: 'Don\’t worry - you can always ask for help. Our team is here to support you and make sure you clearly understand every step. Just email us at support@kroolla.com, and we\’ll be happy to guide you.'
   },
   {
-    question: 'Can I access the program on my phone?',
-    answer: 'Yes! The program is fully mobile-responsive and works on all devices. You can access your daily exercises, progress tracking, and all materials from your phone, tablet, or computer.'
+    question: 'What is your refund policy?',
+    answer: 'We offer a 14-day money-back guarantee. If you\’re not satisfied within the first 14 days, simply contact us and you\’ll receive a full refund — no questions asked.'
   },
   {
-    question: 'What makes this different from other anxiety programs?',
-    answer: 'Our program combines evidence-based CBT techniques with practical, easy-to-follow exercises. Unlike generic meditation apps, we focus specifically on breaking the anxiety cycle through proven psychological methods. Plus, you get lifetime access and can revisit the content whenever you need it.'
+    question: 'I\’m still concerned. What should I do?',
+    answer: 'You can reach our support team anytime at support@kroolla.com. We\’re here to help you with any questions.'
   }
 ]
 

@@ -34,7 +34,7 @@ export default function MethodSection() {
   return (
     <SectionContainer id="method" className="py-20">
       <div className="max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function MethodSection() {
           viewport={{ once: true }}
         >
           {/* Pill Bar */}
-          <motion.div 
+          <motion.div
             className="flex justify-center mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function MethodSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Table of Contents */}
-          <motion.div 
+          <motion.div
             className="space-y-4"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -94,21 +94,21 @@ export default function MethodSection() {
                         animate={{ rotate: expandedModules.has(module.id) ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <svg 
-                          className="w-5 h-5 text-accent-yellow" 
-                          fill="none" 
-                          stroke="currentColor" 
+                        <svg
+                          className="w-5 h-5 text-accent-yellow"
+                          fill="none"
+                          stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </motion.div>
                     </button>
-                    
+
                     {/* Module Parts */}
                     <motion.div
                       initial={false}
-                      animate={{ 
+                      animate={{
                         height: expandedModules.has(module.id) ? 'auto' : 0,
                         opacity: expandedModules.has(module.id) ? 1 : 0
                       }}
@@ -136,7 +136,7 @@ export default function MethodSection() {
           </motion.div>
 
           {/* Right Column - Pricing Card */}
-          <motion.div 
+          <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -158,7 +158,7 @@ export default function MethodSection() {
               {/* Pricing Header */}
               <div className="text-center mb-8">
                 <div className="text-4xl font-bold text-white mb-2">
-                  $149
+                  $249
                 </div>
                 <div className="text-text-secondary">One-time payment</div>
               </div>
@@ -171,7 +171,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">2+ hours of focused audio lessons</span>
+                  <span className="text-white">Save years of struggle</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -179,7 +179,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">6 structured modules, step by step</span>
+                  <span className="text-white">Save thousands in medical costs</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -187,7 +187,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Lifetime access, listen anytime</span>
+                  <span className="text-white">Step-by-step guide to heal from the root</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -195,7 +195,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Guided practices for better sleep</span>
+                  <span className="text-white">Lifetime access, free updates</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
@@ -203,15 +203,7 @@ export default function MethodSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-white">Science-based, easy to follow</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-accent-yellow flex items-center justify-center">
-                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-white">30-day money-back guarantee</span>
+                  <span className="text-white">14-day money-back guarantee</span>
                 </div>
               </div>
 
@@ -222,10 +214,10 @@ export default function MethodSection() {
                 className="w-full text-lg py-4 flex items-center justify-center gap-2"
               >
                 Break the cycle
-                <svg 
-                  className="w-5 h-5" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -233,11 +225,21 @@ export default function MethodSection() {
               </Button>
 
               {/* Payment Options */}
-              <div className="text-center mt-4">
-                <div className="text-sm text-text-secondary">
-                  Optional: <span className="font-bold">Divide into 3 Monthly Payments</span>
-                </div>
-              </div>
+              <motion.div
+                className="mt-4 flex justify-center gap-2 text-sm text-text-secondary"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.8 }}
+              >
+                <Image
+                  src="/images/present-box.svg"
+                  alt="Present box"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                <span>14-day money-back guarantee</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>

@@ -18,7 +18,7 @@ const navItems: NavItem[] = [
   { label: 'Problems', href: '#problems', section: 'problems' },
   { label: 'Method', href: '#method', section: 'method' },
   { label: 'Results', href: '#results', section: 'results' },
-  { label: 'FAQ', href: '#faq', section: 'faq' },
+  { label: 'FAQs', href: '#faq', section: 'faq' },
 ]
 
 export default function SiteHeader() {
@@ -26,6 +26,7 @@ export default function SiteHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   const isHomePage = pathname === '/'
+  const isLandingPage = pathname === '/landing-page'
 
   // Handle smooth scrolling to sections
   const handleNavClick = (href: string, section: string) => {
@@ -39,7 +40,7 @@ export default function SiteHeader() {
 
   // Track active section based on scroll position
   useEffect(() => {
-    if (isHomePage) return // Don't track sections on home page
+    if (!isLandingPage) return // Only track sections on landing page
 
     const handleScroll = () => {
       const sections = navItems.map(item => item.section)
@@ -56,18 +57,23 @@ export default function SiteHeader() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHomePage])
+  }, [isLandingPage])
+
+  // Hide header completely on home page
+  if (isHomePage) {
+    return null
+  }
 
   return (
     <div className="sticky top-4 z-50">
       <div className="mx-auto w-full max-w-[1100px] px-4 md:px-6">
         <header className="flex h-14 md:h-16 items-center justify-between rounded-2xl border border-white/10 bg-black/70 backdrop-blur px-3 md:px-5 shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
           <link rel="icon" href="/images/logo.svg" />
-          
-          {/* Logo - centered on home page, left-aligned on other pages */}
+
+          {/* Logo - centered when not landing page, left-aligned on landing page */}
           <Link href="/" className={cn(
             "flex items-center gap-2 text-white",
-            isHomePage ? "mx-auto" : ""
+            !isLandingPage ? "mx-auto" : ""
           )}>
             <div className="flex items-center gap-2">
               <Image
@@ -81,8 +87,8 @@ export default function SiteHeader() {
             </div>
           </Link>
 
-          {/* Navigation - only show on non-home pages */}
-          {!isHomePage && (
+          {/* Navigation - only show on landing page */}
+          {isLandingPage && (
             <>
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center space-x-8">
@@ -110,14 +116,14 @@ export default function SiteHeader() {
                   size="md"
                   className="inline-flex items-center gap-2"
                 >
-                  <Image
-                    src="/images/arterisk.svg"
-                    alt="Asterisk"
-                    width={16}
-                    height={16}
-                    className="w-4 h-4"
-                  />
                   Break the Cycle
+                  <Image
+                    src="/images/lightning-bolt.svg"
+                    alt="Lightning bolt"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5"
+                  />
                 </Button>
               </div>
 
@@ -154,8 +160,8 @@ export default function SiteHeader() {
           )}
         </header>
 
-        {/* Mobile Menu - only show on non-home pages */}
-        {!isHomePage && isMobileMenuOpen && (
+        {/* Mobile Menu - only show on landing page */}
+        {isLandingPage && isMobileMenuOpen && (
           <div className="md:hidden mt-2 rounded-2xl border border-white/10 bg-black/70 backdrop-blur px-4 py-4 shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
@@ -179,13 +185,6 @@ export default function SiteHeader() {
                   size="md"
                   className="w-full inline-flex items-center justify-center gap-2"
                 >
-                  <Image
-                    src="/images/arterisk.svg"
-                    alt="Asterisk"
-                    width={16}
-                    height={16}
-                    className="w-4 h-4"
-                  />
                   Break the Cycle
                 </Button>
               </div>

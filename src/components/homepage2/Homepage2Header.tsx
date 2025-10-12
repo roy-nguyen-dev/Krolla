@@ -23,8 +23,8 @@ const navItems: NavItem[] = [
   { label: 'eBook', href: '#hero', section: 'hero' },
   { label: 'Course', href: '#course', section: 'course' },
   { label: 'Coaching', href: '#coaching', section: 'coaching' },
-  { label: 'Community', href: '#community', section: 'community' },
   { label: 'FAQs', href: '#faq', section: 'faq' },
+  { label: 'Community', href: '#community', section: 'community' },
 ]
 
 export const Homepage2Header: React.FC = () => {
@@ -37,7 +37,7 @@ export const Homepage2Header: React.FC = () => {
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
-      setActiveSection(section)
+      // setActiveSection(section)
     }
     setIsMobileMenuOpen(false)
   }
@@ -52,11 +52,22 @@ export const Homepage2Header: React.FC = () => {
       const sections = navItems.map(item => item.section)
       const scrollPosition = window.scrollY + 100
 
+      // Check if we're near the bottom of the page
+      const isNearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i])
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i])
-          break
+        if (section) {
+          // For the last section, also check if we're near the bottom
+          if (i === sections.length - 1 && isNearBottom) {
+            setActiveSection(sections[i])
+            break
+          }
+          // For other sections, use the normal logic
+          if (section.offsetTop <= scrollPosition) {
+            setActiveSection(sections[i])
+            break
+          }
         }
       }
     }
@@ -85,7 +96,7 @@ export const Homepage2Header: React.FC = () => {
                 className={cn(
                   'text-sm font-medium transition-colors duration-200 hover:text-gray-900',
                   activeSection === item.section
-                    ? 'text-black'
+                    ? 'text-black font-bold'
                     : 'text-gray-600'
                 )}
               >
@@ -148,7 +159,7 @@ export const Homepage2Header: React.FC = () => {
                   className={cn(
                     'text-left text-sm font-medium transition-colors duration-200 hover:text-gray-900',
                     activeSection === item.section
-                      ? 'text-black'
+                      ? 'text-black font-bold'
                       : 'text-gray-600'
                   )}
                 >
