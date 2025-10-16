@@ -2,8 +2,16 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
+  const pathname = usePathname()
+  
+  // Hide footer on landing page
+  if (pathname === '/landing-page') {
+    return null
+  }
+
   return (
     <footer className="bg-black text-gray-300">
       <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -44,7 +52,7 @@ export default function Footer() {
             </li>
           </ul>
           <Link
-            href="https://discord.com"
+            href="https://discord.gg/SfY5WWk5VB"
             target="_blank"
             className="inline-flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-md text-sm"
           >

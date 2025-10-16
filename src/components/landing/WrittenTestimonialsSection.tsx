@@ -8,29 +8,33 @@ import { TestimonialCard } from '@/components/ui/testimonial-card'
 const writtenTestimonials = [
   {
     id: 'testimonial-1',
-    name: 'Sarah M.',
-    avatar: '/images/avatar1.jpg',
+    name: 'Leo Shipulya',
+    subtitle: 'Marketing @ WeavePay',
+    avatar: '/images/landing-testimonial1.png',
     rating: 5,
     testimonial: 'This program completely changed my life. After years of struggling with panic attacks, I finally found a method that works. The daily exercises are simple but incredibly effective. I went from having multiple panic attacks a week to feeling calm and in control.'
   },
   {
     id: 'testimonial-2',
-    name: 'Michael R.',
-    avatar: '/images/avatar2.jpg',
+    name: 'John Hampton',
+    subtitle: 'Founder at Schoolwise',
+    avatar: '/images/landing-testimonial2.png',
     rating: 5,
     testimonial: 'I was skeptical at first, but the results speak for themselves. The CBT techniques taught in this program helped me understand my anxiety triggers and gave me practical tools to manage them. I\'m now able to handle stressful situations without spiraling into panic.'
   },
   {
     id: 'testimonial-3',
-    name: 'Emily K.',
-    avatar: '/images/avatar3.jpg',
+    name: 'Matt Downey',
+    subtitle: 'Creative Founder, Digital Native',
+    avatar: '/images/landing-testimonial3.png',
     rating: 5,
     testimonial: 'The breathing exercises and mindfulness techniques are game-changers. I sleep better, feel more confident, and my relationships have improved because I\'m no longer constantly worried. This program is worth every penny.'
   },
   {
     id: 'testimonial-4',
-    name: 'David L.',
-    avatar: '/images/avatar4.jpg',
+    name: 'Luna Lindsay',
+    subtitle: 'Founder at Cleauv Home Services',
+    avatar: '/images/landing-testimonial4.png',
     rating: 5,
     testimonial: 'I tried therapy and medication, but nothing worked as well as this program. The step-by-step approach made it easy to follow, and the progress tracking kept me motivated. I\'m finally free from the anxiety cycle that controlled my life for years.'
   }
