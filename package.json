@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "3.3.4",
+    "@mailerlite/mailerlite-nodejs": "^1.5.0",
     "@tailwindcss/typography": "0.5.10",
     "@types/node": "20.14.9",
     "@types/nodemailer": "6.4.14",
