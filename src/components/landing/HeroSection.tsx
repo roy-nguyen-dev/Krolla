@@ -115,7 +115,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1.8 }}
           >
             <HeroVideoPlayer
-              src="Videos/14s-version.mp4"
+              src="videos/14s-version.mp4"
               poster="/images/landingpage-main.png"
               className="w-full"
             />
