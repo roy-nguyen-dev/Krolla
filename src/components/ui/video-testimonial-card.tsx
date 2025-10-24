@@ -8,7 +8,6 @@ import HeroVideoPlayer from './hero-video-player'
 interface VideoTestimonialCardProps {
   thumbnail: string
   name: string
-  title: string
   videoUrl?: string
   hasVideo?: boolean
   className?: string
@@ -17,7 +16,6 @@ interface VideoTestimonialCardProps {
 export default function VideoTestimonialCard({
   thumbnail,
   name,
-  title,
   videoUrl,
   hasVideo = false,
   className,
@@ -67,10 +65,6 @@ export default function VideoTestimonialCard({
             {name}
           </h3>
 
-          {/* Title */}
-          <p className="text-sm text-text-secondary group-hover:text-white/80 transition-colors duration-300">
-            {title}
-          </p>
         </div>
       </div>
 

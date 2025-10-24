@@ -8,6 +8,7 @@ import MethodSection from '@/components/landing/MethodSection'
 import VideoTestimonialsSection from '@/components/landing/VideoTestimonialsSection'
 import WrittenTestimonialsSection from '@/components/landing/WrittenTestimonialsSection'
 import FAQSection from '@/components/landing/FAQSection'
+import MobileEndSection from '@/components/landing/MobileEndSection'
 
 export default function LandingPage() {
   return (
@@ -19,6 +20,7 @@ export default function LandingPage() {
       <VideoTestimonialsSection />
       <WrittenTestimonialsSection />
       <FAQSection />
+      <MobileEndSection />
     </main>
   )
 }

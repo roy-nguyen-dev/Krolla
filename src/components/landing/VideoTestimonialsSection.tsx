@@ -10,40 +10,34 @@ const videoTestimonials = [
   {
     thumbnail: '/images/testimonial-1.jpg',
     name: 'Harsh Patel',
-    title: 'Founder at Macro',
     videoUrl: 'videos/Testimonials_1_1.mov',
     hasVideo: true,
   },
   {
     thumbnail: '/images/testimonial-2.jpg',
     name: 'Andy Zhang',
-    title: 'Co-Founder & CTO at Tower YC W24',
     videoUrl: 'videos/testimonials_2.mov',
     hasVideo: true,
   },
   {
     thumbnail: '/images/testimonial-3.jpg',
     name: 'Brandon Turp',
-    title: 'Founder at Nextlayer',
     videoUrl: 'videos/testimonials_3.mov',
     hasVideo: true,
   },
   {
     thumbnail: '/images/testimonial-4.jpg',
     name: 'Drew',
-    title: 'Founder Anabolic Insights',
     hasVideo: false,
   },
   {
     thumbnail: '/images/testimonial-5.jpg',
     name: 'Jules Ioannidis',
-    title: 'Co-founder at Gracenote',
     hasVideo: false,
   },
   {
     thumbnail: '/images/testimonial-6.jpg',
     name: 'Carson Suite',
-    title: 'Founder at InvolvChat',
     hasVideo: false,
   },
 ]
@@ -91,7 +85,6 @@ export default function VideoTestimonialsSection() {
               <VideoTestimonialCard
                 thumbnail={testimonial.thumbnail}
                 name={testimonial.name}
-                title={testimonial.title}
                 videoUrl={testimonial.videoUrl}
                 hasVideo={testimonial.hasVideo}
               />

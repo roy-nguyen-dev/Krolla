@@ -25,7 +25,6 @@ function stringToIndex(str: string) {
 
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, className }) => {
   const { name, avatar, testimonial: text, rating = 5 } = testimonial
-  const subtitle: string | undefined = (testimonial as any).subtitle
 
   const initials = (avatar || name?.slice(0, 2) || 'U').toString().slice(0, 2).toUpperCase()
   const colorClass = avatarPalettes[stringToIndex(initials)]
@@ -63,9 +62,6 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, c
         )}
         <div className="min-w-0">
           <p className="text-[15px] font-semibold leading-tight truncate">{name}</p>
-          {subtitle && (
-            <p className="text-[12px] text-white/60 leading-tight truncate">{subtitle}</p>
-          )}
         </div>
       </div>
 

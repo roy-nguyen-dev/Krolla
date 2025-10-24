@@ -10,14 +10,14 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Anxiety Management eBook - Break the Anxiety Cycle',
+  title: 'Kroolla | Break the Anxiety Cycle',
   description:
     'The only eBook that shows you how to break the anxiety cycle. Learn proven techniques to manage anxiety, stop panic attacks, and reclaim your peace of mind.',
   keywords:
     'anxiety management, panic attacks, mental health, mindfulness, breathing exercises, stress relief',
   authors: [{ name: 'Anxiety Management Team' }],
   openGraph: {
-    title: 'Anxiety Management eBook - Break the Anxiety Cycle',
+    title: 'Kroolla | Break the Anxiety Cycle',
     description:
       'Learn proven techniques to manage anxiety and stop panic attacks with our comprehensive 14-day program.',
     type: 'website',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Anxiety Management eBook - Break the Anxiety Cycle',
+    title: 'Kroolla | Break the Anxiety Cycle',
     description:
       'Learn proven techniques to manage anxiety and stop panic attacks with our comprehensive 14-day program.',
   },

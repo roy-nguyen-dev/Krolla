@@ -80,6 +80,7 @@ export const Homepage2Header: React.FC = () => {
     <div className={`md:sticky md:top-0 z-50 bg-white border-b border-gray-200 ${inter.variable} font-sans`} suppressHydrationWarning>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <header className="flex h-16 items-center justify-between">
+          <link rel="icon" href="/images/logo.svg" />
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 text-black">
             <div className="flex items-center gap-2">
