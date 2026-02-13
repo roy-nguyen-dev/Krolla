@@ -5,8 +5,13 @@ import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
+import type { AuthorContent } from '@/lib/content'
 
-export const AuthorSection: React.FC = () => {
+interface Props {
+  content: AuthorContent
+}
+
+export const AuthorSection: React.FC<Props> = ({ content }) => {
   const router = useRouter()
 
   const handleRedirectTo = (href: string) => {
@@ -42,15 +47,15 @@ export const AuthorSection: React.FC = () => {
             className="space-y-6"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-black">
-              Hey, I'm Michael.
+              {content.headline}
             </h2>
             
             <p className="text-xl text-gray-600 font-medium">
-              Self recovery from anxiety without medication
+              {content.tagline}
             </p>
             
             <p className="text-lg text-gray-600 leading-relaxed">
-              I help people overcome anxiety and panic attacks through mindfulness, CBT, and lifestyle transformation.
+              {content.description}
             </p>
 
             {/* Buttons */}
@@ -60,14 +65,14 @@ export const AuthorSection: React.FC = () => {
                 onClick={() => handleRedirectTo('/landing-page')}
                 className="bg-black text-white hover:bg-gray-800 px-8 py-2"
               >
-                Break the Cycle
+                {content.primaryCta}
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-black text-black hover:bg-gray-50 px-8 py-2"
               >
-                View blogs
+                {content.secondaryCta}
               </Button>
             </div>
           </motion.div>
@@ -77,5 +82,3 @@ export const AuthorSection: React.FC = () => {
     </SectionContainer>
   )
 }
-
-

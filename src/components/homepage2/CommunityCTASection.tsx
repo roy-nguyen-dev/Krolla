@@ -5,8 +5,13 @@ import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import type { CommunityCTAContent } from '@/lib/content'
 
-export const CommunityCTASection: React.FC = () => {
+interface Props {
+  content: CommunityCTAContent
+}
+
+export const CommunityCTASection: React.FC<Props> = ({ content }) => {
   return (
     <SectionContainer id="community" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -44,10 +49,10 @@ export const CommunityCTASection: React.FC = () => {
               <div className="w-fit">
 
                 <h2 className="font-bold text-black mb-4" style={{ fontSize: '31.25px' }}>
-                  Let us help you
+                  {content.headline}
                 </h2>
                 <p className="text-gray-600 text-sm md:text-base" style={{ fontSize: '16.45px' }}>
-                  A kind community that understands and stands by you.
+                  {content.description}
                 </p>
               </div>
               <div className="absolute top-0 right-0 h-full md:flex items-center hidden" style={{ right: '-69px' }}>
@@ -78,7 +83,7 @@ export const CommunityCTASection: React.FC = () => {
             size="lg"
             className="bg-black text-white hover:bg-gray-800 px-8 py-4"
           >
-            Join Community
+            {content.buttonText}
           </Button>
         </motion.div>
           </div>
@@ -87,5 +92,3 @@ export const CommunityCTASection: React.FC = () => {
     </SectionContainer>
   )
 }
-
-

@@ -3,28 +3,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
+import type { HowItWorksContent } from '@/lib/content'
 
-interface ProcessStep {
-  title: string
-  description: string
+interface Props {
+  content: HowItWorksContent
 }
 
-const processSteps: ProcessStep[] = [
-  {
-    title: "Share Your Data",
-    description: "We collect your details and context to get a clear picture"
-  },
-  {
-    title: "Smart Analysis",
-    description: "We break down your info to design a personalized roadmap"
-  },
-  {
-    title: "Tailored Delivery",
-    description: "We deliver your full roadmap with everything you need to start your recovery"
-  }
-]
-
-export const HowItWorksSection: React.FC = () => {
+export const HowItWorksSection: React.FC<Props> = ({ content }) => {
   return (
     <SectionContainer className="py-0 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -38,13 +23,13 @@ export const HowItWorksSection: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              How It Works?
+              {content.headline}
             </h2>
           </motion.div>
 
           {/* Steps */}
           <div className="grid md:grid-cols-3 gap-8">
-            {processSteps.map((step, index) => (
+            {content.steps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

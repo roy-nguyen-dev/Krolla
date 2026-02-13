@@ -10,51 +10,13 @@ import { Modal } from '@/components/ui/modal'
 import { SectionContainer } from '@/components/ui/section-container'
 import Carousel from '@/components/ui/carousel'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import type { HeroContent } from '@/lib/content'
 
-interface Testimonial {
-  name: string
-  ageContext: string
-  avatar: string
-  quote: string
-  rating: number
+interface Props {
+  content: HeroContent
 }
 
-const testimonials: Testimonial[] = [
-  {
-    name: 'Blake Beus',
-    ageContext: '32, insomnia & anxiety 6 years',
-    avatar: '/images/rating-avatar5.png',
-    quote:
-      "I've been stuck with anxiety disorder for 7 years, and after finishing this book, I feel like I've almost gotten my life back. No words can truly express my gratitude.",
-    rating: 5,
-  },
-  {
-    name: 'Qwantel Latay',
-    ageContext: '21, panic attacks 2 years',
-    avatar: '/images/rating-avatar6.png',
-    quote:
-      "This book didn't just give me knowledge it gave me peace. My anxiety no longer controls every part of my life.",
-    rating: 5,
-  },
-  {
-    name: 'Dave Baxter',
-    ageContext: '30, trapped in endless worry',
-    avatar: '/images/rating-avatar7.png',
-    quote:
-      "I've been through countless therapies and self-help guides, but this book finally made me feel understood and guided. Truly life-changing.",
-    rating: 5,
-  },
-  {
-    name: 'James Logan',
-    ageContext: "28, thought I'd never escape",
-    avatar: '/images/rating-avatar8.jpg',
-    quote:
-      'Living with anxiety for so long felt endless. This book gave me tools, hope, and strength to believe I can heal.',
-    rating: 5,
-  },
-]
-
-export const HeroSection: React.FC = () => {
+export const HeroSection: React.FC<Props> = ({ content }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalType, setModalType] = useState<'success' | 'error'>('success')
   const [modalMessage, setModalMessage] = useState('')
@@ -116,7 +78,7 @@ export const HeroSection: React.FC = () => {
             className="inline-flex items-center gap-3 px-1.5 py-1.5 rounded-lg border border-dashed border-black bg-white mb-8"
           >
             <div className="w-full bg-black text-white px-6 py-0.5 rounded-lg font-medium italic text-xl">
-              Only 8 Copies Left
+              {content.badgeText}
             </div>
           </motion.div>
 
@@ -130,9 +92,9 @@ export const HeroSection: React.FC = () => {
               fontWeight: 900
             }}
           >
-            The Only Book To
+            {content.headlineLine1}
             <br />
-            <span className="italic">Break The Anxiety Loop</span>
+            <span className="italic">{content.headlineLine2}</span>
           </motion.h1>
 
           {/* Email Form */}
@@ -149,7 +111,7 @@ export const HeroSection: React.FC = () => {
                 <input
                   {...register('email')}
                   type="email"
-                  placeholder="email@gmail.com"
+                  placeholder={content.emailPlaceholder}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 bg-gray-100"
                 />
                 {errors.email && (
@@ -164,7 +126,7 @@ export const HeroSection: React.FC = () => {
                 loading={isSubmitting}
                 className="whitespace-nowrap bg-black text-white hover:bg-gray-800 px-6 py-3 rounded-lg"
               >
-                Get Your Free Book
+                {content.buttonText}
               </Button>
             </div>
           </motion.form>
@@ -200,7 +162,7 @@ export const HeroSection: React.FC = () => {
 
               {/* Rating Text */}
               <span className="text-sm text-black">
-                <span className="font-bold">4.9/5</span> based on reviews
+                <span className="font-bold">{content.ratingScore}</span> {content.ratingText}
               </span>
             </div>
           </motion.div>
@@ -223,7 +185,7 @@ export const HeroSection: React.FC = () => {
               loop={false}
               pingpong={true}
             >
-              {testimonials.map((testimonial, i) => (
+              {content.testimonials.map((testimonial, i) => (
                 <div key={i} className="px-1">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -248,7 +210,7 @@ export const HeroSection: React.FC = () => {
 
                     {/* Quote */}
                     <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
 
                     {/* Rating */}
@@ -264,7 +226,7 @@ export const HeroSection: React.FC = () => {
           ) : (
             // DESKTOP: Grid static
             <div key="desktop-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {testimonials.map((testimonial, index) => (
+              {content.testimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -289,7 +251,7 @@ export const HeroSection: React.FC = () => {
 
                   {/* Quote */}
                   <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
-                    "{testimonial.quote}"
+                    &ldquo;{testimonial.quote}&rdquo;
                   </p>
 
                   {/* Rating */}

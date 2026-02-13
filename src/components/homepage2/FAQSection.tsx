@@ -5,40 +5,7 @@ import { motion } from 'framer-motion'
 import { SectionContainer } from '@/components/ui/section-container'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-
-interface FAQ {
-  question: string
-  answer: string
-  defaultOpen?: boolean
-}
-
-const faqs: FAQ[] = [
-  {
-    question: "Is this method safe?",
-    answer: "Absolutely. All methods are simple and easy to practice, like CBT, Grounding Techniques, and EMDR. These are evidence-based approaches that have been used safely by millions of people worldwide.",
-    defaultOpen: true
-  },
-  {
-    question: "Can I stop taking my medication?",
-    answer: "We always recommend consulting with your healthcare provider before making any changes to your medication. Our program is designed to work alongside your current treatment plan, not replace it.",
-    defaultOpen: false
-  },
-  {
-    question: "Is my information kept private?",
-    answer: "Yes, absolutely. We take your privacy seriously and follow strict data protection protocols. Your personal information is encrypted and never shared with third parties.",
-    defaultOpen: false
-  },
-  {
-    question: "What is your refund policy?",
-    answer: "We offer a 30-day money-back guarantee. If you're not satisfied with the program within the first 30 days, we'll provide a full refund, no questions asked.",
-    defaultOpen: false
-  },
-  {
-    question: "I'm still concerned. What should I do?",
-    answer: "We understand your concerns. Feel free to reach out to our support team at any time. We're here to help and answer any questions you may have about the program.",
-    defaultOpen: false
-  }
-]
+import type { FAQContent } from '@/lib/content'
 
 // Custom Plus Icon Component
 const PlusIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
@@ -69,9 +36,13 @@ const PlusIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   )
 }
 
-export const FAQSection: React.FC = () => {
+interface Props {
+  content: FAQContent
+}
+
+export const FAQSection: React.FC<Props> = ({ content }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(
-    faqs.findIndex(faq => faq.defaultOpen) || 0
+    content.faqs.findIndex(faq => faq.defaultOpen) || 0
   )
 
   const toggleFAQ = (index: number) => {
@@ -93,10 +64,18 @@ export const FAQSection: React.FC = () => {
             {/* Header */}
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-                Frequently <span style={{ color: '#8A8A8A' }}>asked</span> questions
+                {content.headline.includes('asked') ? (
+                  <>
+                    {content.headline.split('asked')[0]}
+                    <span style={{ color: '#8A8A8A' }}>asked</span>
+                    {content.headline.split('asked')[1]}
+                  </>
+                ) : (
+                  content.headline
+                )}
               </h2>
               <p className="text-lg text-gray-600">
-                Got questions? Find quick answers here! If you need more details, feel free to get in touch anytime.
+                {content.subheadline}
               </p>
             </div>
 
@@ -122,7 +101,7 @@ export const FAQSection: React.FC = () => {
           >
             {/* FAQ Accordion */}
             <div className="space-y-4">
-              {faqs.map((faq, index) => (
+              {content.faqs.map((faq, index) => (
                 <div
                   key={index}
                   className="border border-gray-200 rounded-lg overflow-hidden"

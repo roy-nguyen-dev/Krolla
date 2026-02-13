@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import type { CoachingContent, CoachingPackage } from '@/lib/content'
 
 // Custom Pricing Card for CoachingSection with left alignment and custom icons
 const CoachingPricingCard: React.FC<{
@@ -88,34 +89,11 @@ const CoachingPricingCard: React.FC<{
     )
   }
 
-export const CoachingSection: React.FC = () => {
+interface Props {
+  content: CoachingContent
+}
 
-  const coachingPackages = [
-    {
-      name: "Calm Start",
-      price: "$97",
-      paymentType: "One-time payment",
-      features: [
-        "Personalized written feedback on your situation",
-        "Clear steps to break free from anxiety",
-        "Delivered within 48 hours"
-      ],
-      ctaText: "Break the Cycle"
-    },
-    {
-      name: "Full Recovery",
-      price: "$197",
-      paymentType: "One-time payment",
-      features: [
-        "Everything in Calm Start",
-        "1-Month Support",
-        "Anxiety Toolkit",
-        "Delivered within 24 hours"
-      ],
-      ctaText: "Break the Cycle"
-    }
-  ]
-
+export const CoachingSection: React.FC<Props> = ({ content }) => {
   return (
     <SectionContainer id="coaching" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -128,17 +106,17 @@ export const CoachingSection: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            Get Coached, Gain Control
+            {content.headline}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Personal guidance and clear steps to end the anxiety cycle.
+            {content.subheadline}
           </p>
         </motion.div>
         <div className="rounded-lg p-8" style={{ backgroundColor: '#F3F3F3' }}>
 
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
-            {coachingPackages.map((pkg, index) => (
+            {content.packages.map((pkg, index) => (
               <motion.div
                 key={pkg.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -162,5 +140,3 @@ export const CoachingSection: React.FC = () => {
     </SectionContainer>
   )
 }
-
-

@@ -2,33 +2,23 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
+import type { HeaderContent } from '@/lib/content'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
 
-interface NavItem {
-  label: string
-  href: string
-  section: string
+interface Props {
+  content: HeaderContent
 }
 
-const navItems: NavItem[] = [
-  { label: 'eBook', href: '#hero', section: 'hero' },
-  { label: 'Course', href: '#course', section: 'course' },
-  { label: 'Coaching', href: '#coaching', section: 'coaching' },
-  { label: 'FAQs', href: '#faq', section: 'faq' },
-  { label: 'Community', href: '#community', section: 'community' },
-]
-
-export const Homepage2Header: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('hero')
+export const Homepage2Header: React.FC<Props> = ({ content }) => {
+  const [activeSection, setActiveSection] = useState(content.navItems[0]?.section || 'hero')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const router = useRouter()
 
@@ -37,7 +27,6 @@ export const Homepage2Header: React.FC = () => {
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
-      // setActiveSection(section)
     }
     setIsMobileMenuOpen(false)
   }
@@ -49,21 +38,18 @@ export const Homepage2Header: React.FC = () => {
   // Track active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => item.section)
+      const sections = content.navItems.map(item => item.section)
       const scrollPosition = window.scrollY + 100
 
-      // Check if we're near the bottom of the page
       const isNearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i])
         if (section) {
-          // For the last section, also check if we're near the bottom
           if (i === sections.length - 1 && isNearBottom) {
             setActiveSection(sections[i])
             break
           }
-          // For other sections, use the normal logic
           if (section.offsetTop <= scrollPosition) {
             setActiveSection(sections[i])
             break
@@ -74,7 +60,7 @@ export const Homepage2Header: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [content.navItems])
 
   return (
     <div className={`md:sticky md:top-0 z-50 bg-white border-b border-gray-200 ${inter.variable} font-sans`} suppressHydrationWarning>
@@ -84,13 +70,13 @@ export const Homepage2Header: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 text-black">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-black">Kroolla</span>
+              <span className="text-2xl font-bold text-black">{content.logoText}</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {content.navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href, item.section)}
@@ -114,7 +100,7 @@ export const Homepage2Header: React.FC = () => {
               size="md"
               className="bg-black text-white hover:bg-gray-800"
             >
-              Break the Cycle
+              {content.ctaButtonText}
             </Button>
           </div>
 
@@ -153,7 +139,7 @@ export const Homepage2Header: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white">
             <nav className="flex flex-col space-y-4 py-4">
-              {navItems.map((item) => (
+              {content.navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => handleNavClick(item.href, item.section)}
@@ -174,7 +160,7 @@ export const Homepage2Header: React.FC = () => {
                   size="md"
                   className="w-full bg-black text-white hover:bg-gray-800"
                 >
-                  Break the Cycle
+                  {content.ctaButtonText}
                 </Button>
               </div>
             </nav>
@@ -184,5 +170,3 @@ export const Homepage2Header: React.FC = () => {
     </div>
   )
 }
-
-

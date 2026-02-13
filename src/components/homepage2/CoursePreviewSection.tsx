@@ -6,8 +6,13 @@ import { SectionContainer } from '@/components/ui/section-container'
 import { Button } from '@/components/ui/button'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import { useRouter } from 'next/navigation'
+import type { CoursePreviewContent } from '@/lib/content'
 
-export const CoursePreviewSection: React.FC = () => {
+interface Props {
+  content: CoursePreviewContent
+}
+
+export const CoursePreviewSection: React.FC<Props> = ({ content }) => {
   const isMobile = useIsMobile()
   const router = useRouter()
 
@@ -26,10 +31,10 @@ export const CoursePreviewSection: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            Learn Calm, Step By Step
+            {content.sectionHeadline}
           </h2>
           <p className="text-lg text-gray-500">
-            Save years of struggle - see results in weeks.
+            {content.sectionSubheadline}
           </p>
         </motion.div>
       </div>
@@ -62,18 +67,17 @@ export const CoursePreviewSection: React.FC = () => {
           >
             {/* Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm font-medium">
-              Bestseller
+              {content.badge}
             </div>
 
             {/* Headline */}
             <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight">
-              Stop Panic Attack in <br />
-              14 days - Or It's Free
+              {content.courseTitle}
             </h2>
 
             {/* Description */}
             <p className="text-lg text-gray-600 leading-relaxed w-3/4">
-              Anxiety comes back because it's a loop this course shows you how to break it, stop panic attacks, calm anxiety, and live freely.
+              {content.courseDescription}
             </p>
 
             {/* CTA Button */}
@@ -82,7 +86,7 @@ export const CoursePreviewSection: React.FC = () => {
               onClick={() => handleRedirectTo('/landing-page')}
               className="bg-black text-white hover:bg-gray-800 px-8 py-2"
             >
-              Break the Cycle
+              {content.buttonText}
             </Button>
 
             {/* Rating with Avatars */}
@@ -118,7 +122,7 @@ export const CoursePreviewSection: React.FC = () => {
                   
                   {/* Rating Text */}
                   <span className="text-sm text-black">
-                    <span className="font-bold">4.9/5</span> based on reviews
+                    <span className="font-bold">{content.ratingScore}</span> {content.ratingText}
                   </span>
                 </div>
               </div>
@@ -154,7 +158,7 @@ export const CoursePreviewSection: React.FC = () => {
                   
                   {/* Rating Text */}
                   <span className="text-sm text-black">
-                    <span className="font-bold">4.9/5</span> based on reviews
+                    <span className="font-bold">{content.ratingScore}</span> {content.ratingText}
                   </span>
                 </div>
               </div>
@@ -166,5 +170,3 @@ export const CoursePreviewSection: React.FC = () => {
     </SectionContainer>
   )
 }
-
-
